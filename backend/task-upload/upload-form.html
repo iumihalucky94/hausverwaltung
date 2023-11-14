@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dateien hochladen</title>
+  <!-- Bootstrap CSS link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f8f9fa; /* Gray background color */
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center">Bitte suchen Sie die Dateien aus</h2>
+    <form action="/:taskId/upload" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <input type="file" name="file1" class="form-control" />
+      </div>
+      <p><div class="form-group">
+        <input type="file" name="file2" class="form-control" />
+      </div></p>
+      <p><div class="form-group">
+        <input type="file" name="file3" class="form-control" />
+      </div></p>
+      <p><div class="form-group">
+        <input type="file" name="file4" class="form-control" />
+      </div></p>
+      <p><div class="form-group">
+        <input type="file" name="file5" class="form-control" />
+      </div></p>
+      <p><div class="form-group">
+        <input type="file" name="file6" class="form-control" />
+      </div></p>
+      <p><div class="form-group">
+        <input type="file" name="file7" class="form-control" />
+      </div></p>
+      <p><div class="form-group">
+        <input type="file" name="file8" class="form-control" />
+      </div></p>
+      <p><div class="form-group">
+        <input type="file" name="file9" class="form-control" />
+      </div></p>
+      <p><div class="form-group">
+        <input type="file" name="file10" class="form-control" />
+      </div></p>
+      <h5 class="text-center">Maximum 10 Dateien pro Auftrag, Gesamtgröße beträgt 50 MB<br/>Ein wiederholtes hochladen der Dateien ist nicht mehr möglich!</h5>
+      <center><button type="submit" class="btn btn-primary">Hochladen</button></center>
+    </form>
+  </div>
+  <!-- Bootstrap JS and Popper.js scripts (needed for some Bootstrap features) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-LMg5P5CZOzWtI3l8v5U4znb3iUbjiroI1V1s1VRdIZHfu8SROBrP8fAHkzQRVoW2" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyOo1DYI01JF0J3SnpWOpFJLwJOMMU6e3h" crossorigin="anonymous"></script>
+</body>
+</html>
