@@ -1,5 +1,5 @@
 <template>
-    <button :style="buttonStyle">{{ buttonText }}</button>
+    <button :style="buttonStyle, buttonWidth">{{ buttonText }}</button>
 </template>
 
 <script>
@@ -13,11 +13,22 @@ export default {
             type: String,
             default: 'rgb(128, 195, 217)', // Set a default color if not provided by the parent
         },
+        buttonWidth: {
+            type: String,
+            default: '4rem', // Set a default color if not provided by the parent
+        },
     },
     computed: {
         buttonStyle() {
             return {
-                background: this.buttonColor,
+                // background: this.buttonColor,
+                // background: this.buttonColor,
+                // Add other button styles here
+            };
+        },
+        buttonStyle() {
+            return {
+                width: this.buttonWidth
                 // background: this.buttonColor,
                 // Add other button styles here
             };
@@ -35,23 +46,25 @@ export default {
 
 <style lang="scss" scoped>
 button {
-    width: 4rem;
+    min-width: 4rem;
+    width: min-content;
+    max-width: calc(100% - 10rem);
     height: 2.5rem;
     font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    // background: rgb(128, 195, 217);
+    background: rgb(128, 195, 217);
     border: 0;
     border-radius: 12px;
     transition: 0.3s all ease-in-out;
-    // background: rgb(var(--button-color));
+
 
     &:hover {
         // background: mix(black, #{$buttonColor}, 10%);
         // background: darken(this.buttonColor, 10%);
-        background: rgb(87, 172, 200);
+        background: rgb(43, 114, 137);
     }
 }
 </style>
