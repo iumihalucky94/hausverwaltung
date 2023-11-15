@@ -1,12 +1,14 @@
 <template>
     <section>
-        Main
-
+        <TheTable />
     </section>
 </template>
 
 <script>
+import TheTable from './table/TheTable.vue';
 export default {
+    components: { TheTable },
+
     data() {
 
 
@@ -17,6 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-    height: 95%;
+    height: 100%;
+    width: 100%;
 }
 </style>
