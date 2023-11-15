@@ -1,6 +1,6 @@
 <template>
     <div>
-        this is plugin
+        test
     </div>
 </template>
 

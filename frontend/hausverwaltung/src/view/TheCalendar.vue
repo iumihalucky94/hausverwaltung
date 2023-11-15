@@ -1,20 +1,18 @@
 <template>
     <section>
-        Calendar
         <CalendarApp></CalendarApp>
-
     </section>
 </template>
 
 <script >
-import CalendarApp from '../plugins/Calendar-app.vue';
+import CalendarApp from '../plugins/calendar/CalendarApp.vue';
 
 export default {
     data() {
         return {}
     },
     components: {
-
+        CalendarApp
     },
     methods: {
         getDataForCalendar() {
