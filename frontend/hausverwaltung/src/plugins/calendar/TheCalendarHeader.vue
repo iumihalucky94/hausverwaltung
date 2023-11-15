@@ -4,7 +4,7 @@
 
         </div>
         <div class="right">
-            <TheCalendarButton buttonText="Day" buttonColor="green" />
+            <TheCalendarButton buttonText="Day" buttonColor="rgb(128, 195, 217)" />
             <TheCalendarButton buttonText="Week" />
             <TheCalendarButton buttonText="Month" />
         </div>

@@ -17,7 +17,7 @@ export default {
     computed: {
         buttonStyle() {
             return {
-                '--button-color': this.buttonColor,
+                background: this.buttonColor,
                 // background: this.buttonColor,
                 // Add other button styles here
             };
@@ -46,12 +46,12 @@ button {
     border: 0;
     border-radius: 12px;
     transition: 0.3s all ease-in-out;
-    background: var(--button-color);
+    // background: rgb(var(--button-color));
 
     &:hover {
-        background: rgba(var(--button-color-rgb), 0.1);
+        // background: mix(black, #{$buttonColor}, 10%);
         // background: darken(this.buttonColor, 10%);
-        // background: rgb(87, 172, 200);
+        background: rgb(87, 172, 200);
     }
 }
 </style>
