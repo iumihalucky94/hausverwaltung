@@ -21,16 +21,11 @@ export default {
     computed: {
         buttonStyle() {
             return {
-                // background: this.buttonColor,
-                // background: this.buttonColor,
-                // Add other button styles here
             };
         },
         buttonStyle() {
             return {
                 width: this.buttonWidth
-                // background: this.buttonColor,
-                // Add other button styles here
             };
         },
     },
@@ -62,8 +57,6 @@ button {
 
 
     &:hover {
-        // background: mix(black, #{$buttonColor}, 10%);
-        // background: darken(this.buttonColor, 10%);
         background: rgb(43, 114, 137);
     }
 }
