@@ -35,28 +35,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-tr {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+// tr {
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
 
-    .the-table-header,
-    .the-table-row {
-        width: calc(100%/3);
-        overflow: hidden;
-        text-align: center;
-    }
+//     .the-table-header,
+//     .the-table-row {
+//         width: calc(100%/3);
+//         overflow: hidden;
+//         text-align: center;
+//     }
 
-    .the-table-header {
-        height: 4rem;
-        font-size: 2rem;
-    }
+//     .the-table-header {
+//         height: 4rem;
+//         font-size: 2rem;
+//     }
 
-    .the-table-row {
-        height: 3rem;
-        font-size: 1.3rem;
-    }
-}
+//     .the-table-row {
+//         height: 3rem;
+//         font-size: 1.3rem;
+//     }
+// }
 </style>
 
 

@@ -15,6 +15,7 @@ export default defineConfig({
         preprocessorOptions: {
             scss: {
                 additionalData: `@import '@/assets/styles/global.scss';`,
+                // additionalData: `@import '@/assets/styles/tailwind.css';`,
             },
         },
     },

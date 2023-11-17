@@ -1,6 +1,6 @@
 <template>
     <section>
-        <table>
+        <table class="w-full table-fixed ">
             <TheTableData />
         </table>
     </section>
@@ -22,9 +22,21 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+// table {
+//     width: 100%;
+//     height: 100%;
+// }
 table {
-    width: 100%;
-    height: 100%;
+    table-layout: fixed;
 }
+
+th,
+td {
+    width: calc(100% / 9);
+    overflow-wrap: break-word;
+    /* Assuming 9 columns based on your listOfHeader */
+}
+
+/* Set equal width for each column (adjust as needed) */
 </style>

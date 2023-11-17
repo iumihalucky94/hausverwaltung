@@ -6,7 +6,6 @@
         <div class="right">
             <CalendarCover />
         </div>
-
     </section>
 </template>
 
