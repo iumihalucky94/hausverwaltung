@@ -1,8 +1,8 @@
 <template>
     <section>
-        <div class="left">
+        <!-- <div class="left">
             left
-        </div>
+        </div> -->
         <div class="right">
             <CalendarCover />
         </div>
@@ -28,15 +28,15 @@ section {
     justify-content: center;
     border: 1px solid green;
 
-    .left {
-        width: 20vw;
-        height: 100%;
-        border: 1px solid blue;
-    }
+    // .left {
+    //     width: 20vw;
+    //     height: 100%;
+    //     border: 1px solid blue;
+    // }
 
     .right {
         display: flex;
-        width: 80vw;
+        width: 100vw;
         height: 100%;
         // border: 1px solid rgb(120, 156, 255);
     }
