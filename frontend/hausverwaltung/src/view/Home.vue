@@ -1,7 +1,7 @@
 <template>
     <section>
-        <div class="w-full h-full flex align-center items-cener bg-coral-100">
-
+        <div class="h-screen w-screen flex items-center justify-center bg-sky-400">
+            <h1 class="text-white text-4xl">Home Page</h1>
         </div>
     </section>
 </template>
