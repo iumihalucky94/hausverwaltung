@@ -1,4 +1,24 @@
 <template>
+    <section>
+        <div class="w-full h-full flex align-center items-cener bg-coral-100">
+
+        </div>
+    </section>
+</template>
+
+<script>
+export default {
+    data() {
+
+
+        return {}
+    }
+}
+</script>
+
+<style lang="scss" scoped></style>
+  
+<!-- <template>
     <div>
         <h1>HOME</h1>
         <router-link :to="{ path: '/calendar' }"><button>Calendar</button></router-link>
@@ -43,4 +63,4 @@ div {
         }
     }
 }
-</style>
+</style> -->

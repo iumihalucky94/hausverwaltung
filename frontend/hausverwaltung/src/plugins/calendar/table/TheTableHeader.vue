@@ -1,7 +1,8 @@
 <template>
     <section>
-        <tr class="bg-gray-200 uppercase flex align-center ">
-            <th v-for="(header, index) in headers" :key="index" class="flex-1 text-center py-2 px-4">{{ header }}</th>
+        <tr class="bg-blue-500 uppercase flex ">
+            <th v-for="(header, index) in headers" :key="index" class="flex-1 text-left py-2 px-4 text-white">{{
+                header }}</th>
         </tr>
     </section>
 </template>

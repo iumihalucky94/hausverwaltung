@@ -1,5 +1,6 @@
 <template>
-    <button :style="buttonStyle, buttonWidth">{{ buttonText }}</button>
+    <!-- <button :style="buttonStyle, buttonWidth">{{ buttonText }}</button> -->
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-1 rounded-full">{{ buttonText }}</button>
 </template>
 
 <script>
@@ -39,25 +40,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-button {
-    min-width: 4rem;
-    width: min-content;
-    max-width: calc(100% - 10rem);
-    height: 2.5rem;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    background: rgb(128, 195, 217);
-    border: 0;
-    border-radius: 12px;
-    transition: 0.3s all ease-in-out;
-
-
-    &:hover {
-        background: rgb(43, 114, 137);
-    }
-}
-</style>
+<style lang="scss" scoped></style>

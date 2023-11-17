@@ -1,5 +1,5 @@
 <template>
-    <section class="flex border-t border-gray-300 hover:bg-gray-100">
+    <section class="flex border-t border-gray-300 hover:bg-blue-100">
         <td v-for="(item, columnIndex) in row" :key="columnIndex" class="flex-1 py-2 px-4">
             {{ Array.isArray(item) ? item.join('\n') : item }}
         </td>
