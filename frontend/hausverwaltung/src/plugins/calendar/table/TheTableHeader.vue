@@ -1,15 +1,19 @@
 <template>
-    <div>
-        Header
-    </div>
+    <section>
+        <tr>
+            <th v-for="(header, index) in headers" :key="index">{{ header }}</th>
+        </tr>
+    </section>
 </template>
 
 <script>
 export default {
+    props: {
+        headers: Array,
+    },
     data() {
-
-
-        return {}
+        return {
+        }
     }
 }
 </script>

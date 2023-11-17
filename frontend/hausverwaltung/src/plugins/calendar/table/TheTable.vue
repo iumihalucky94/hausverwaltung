@@ -1,18 +1,18 @@
 <template>
     <section>
-        <TheTableHeader />
-        <TheTableRow />
+        <table>
+            <TheTableData />
+        </table>
     </section>
 </template>
 
 <script>
-import TheTableHeader from './TheTableHeader.vue';
-import TheTableRow from './TheTableRow.vue';
+// import TheTableHeader from './TheTableHeader.vue';
+import TheTableData from './TheTableData.vue';
 
 export default {
     components: {
-        TheTableHeader,
-        TheTableRow
+        TheTableData,
     },
     data() {
 
@@ -22,4 +22,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+table {
+    width: 100%;
+    height: 100%;
+}
+</style>
