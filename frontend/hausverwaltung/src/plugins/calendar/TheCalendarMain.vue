@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="">
         <TheTable />
     </section>
 </template>
@@ -18,8 +18,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section {
-    height: 100%;
-    width: 100%;
-}
+// section {
+//     height: 100%;
+//     width: 100%;
+// }
 </style>

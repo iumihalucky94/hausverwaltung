@@ -1,8 +1,8 @@
 <template>
     <section>
-        <div class="right">
-            <CalendarCover />
-        </div>
+
+        <!-- <CalendarCover /> -->
+
     </section>
 </template>
 
@@ -16,19 +16,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section {
-    width: 100vw;
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid green;
+// section {
+//     width: 100vw;
+//     height: 90vh;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     border: 1px solid green;
 
 
-    .right {
-        display: flex;
-        width: 100vw;
-        height: 100%;
-    }
-}
+//     .right {
+//         display: flex;
+//         width: 100vw;
+//         height: 100%;
+//     }
+// }
 </style>

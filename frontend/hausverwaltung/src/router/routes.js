@@ -3,6 +3,7 @@
 
 import Home from '@/view/Home.vue'
 import Calendar from '@/view/TheCalendar.vue'
+import TheNavBar from '@/components/static/TheNavBar.vue'
 
 export default [
     {
@@ -13,7 +14,7 @@ export default [
         path: '/home',
         name: 'Home',
         components: {
-            // nav: NavBar,
+            nav: TheNavBar,
             main: Home,
             // footer:,
         }

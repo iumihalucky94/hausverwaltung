@@ -27,21 +27,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section {
-    width: 100%;
-    height: 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row !important;
+// section {
+//     width: 100%;
+//     height: 5%;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     flex-direction: row !important;
 
-    .left,
-    .right {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        width: 50%;
-    }
-}
+//     .left,
+//     .right {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         flex-direction: row;
+//         width: 50%;
+//     }
+// }
 </style>

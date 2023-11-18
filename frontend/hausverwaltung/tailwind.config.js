@@ -7,7 +7,13 @@ export default {
     "./src/assets/styles/**/*.scss",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#EFF5F5',
+        secondary: '#6C8B95',
+        thirdly: '#85BE63'
+      }
+    },
   },
   plugins: [],
 }

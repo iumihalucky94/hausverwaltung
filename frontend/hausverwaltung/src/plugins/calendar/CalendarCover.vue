@@ -28,11 +28,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section {
+// section {
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     flex-direction: column;
+// }
 </style>

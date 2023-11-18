@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="w-4/5 m-auto">
         <CalendarApp></CalendarApp>
     </section>
 </template>
