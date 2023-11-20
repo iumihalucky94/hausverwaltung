@@ -2,8 +2,10 @@
 // import Header from '@/views/TheHomePage.vue'
 
 import Home from '@/view/Home.vue'
-import Calendar from '@/view/TheCalendar.vue'
+// import Calendar from '@/view/TheCalendar.vue'
 import TheNavBar from '@/components/static/TheNavBar.vue'
+import TheTasks from '@/view/TheTasks.vue'
+import TheObjekts from '@/view/TheObjekts.vue'
 
 export default [
     {
@@ -20,11 +22,29 @@ export default [
         }
     },
     {
-        path: '/calendar',
-        name: 'Calendar',
+        path: '/tasks',
+        name: 'Tasks',
         components: {
-            // nav: NavBar,
-            main: Calendar,
+            nav: TheNavBar,
+            main: TheTasks,
+            // footer:,
+        }
+    },
+    {
+        path: '/list',
+        name: 'List',
+        components: {
+            nav: TheNavBar,
+            main: TheTasks,
+            // footer:,
+        }
+    },
+    {
+        path: '/objects',
+        name: 'Objekte',
+        components: {
+            nav: TheNavBar,
+            main: TheObjekts,
             // footer:,
         }
     }

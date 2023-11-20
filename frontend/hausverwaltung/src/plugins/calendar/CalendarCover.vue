@@ -27,12 +27,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-// section {
-
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     flex-direction: column;
-// }
-</style>
+<style lang="scss" scoped></style>

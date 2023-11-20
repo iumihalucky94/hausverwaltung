@@ -13,8 +13,8 @@
                     <router-link :to="{ path: '/home' }">
                         <li class=" hover:text-thirdly">Home</li>
                     </router-link>
-                    <router-link :to="{ path: '/calendar' }">
-                        <li class="hover:text-thirdly">Calendar</li>
+                    <router-link :to="{ path: '/list' }">
+                        <li class="hover:text-thirdly">List</li>
                     </router-link>
                     <router-link :to="{ path: '/objects' }">
                         <li class="hover:text-thirdly">Objects</li>
