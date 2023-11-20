@@ -1,7 +1,10 @@
 <template>
-    <tr>
-        <th v-for="(value, key) in tableHeaderValue" :key="key">{{ value }}</th>
-    </tr>
+    <thead class="bg-blue-100 text-center h-10">
+        <tr>
+            <th v-for="(value, key) in tableHeaderValue" :key="key" class="">{{ value }}
+            </th>
+        </tr>
+    </thead>
 </template>
 
 <script>
@@ -21,4 +24,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style >
+thead {
+    border-radius: 10px;
+}
+</style>

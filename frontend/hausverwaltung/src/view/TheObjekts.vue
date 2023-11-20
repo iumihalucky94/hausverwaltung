@@ -1,6 +1,7 @@
 <template>
-    <section class="w-full h-90 flex justify-center align-center">
-        <TheDataTable :tableData="data" />
+    <section class="w-full h-full flex flex-col justify-center align-center items-center">
+        <div class="h-10 font-bold text-2xl m-5">Some text</div>
+        <TheDataTable :tableData="data" class="mh-90" />
     </section>
 </template>
 

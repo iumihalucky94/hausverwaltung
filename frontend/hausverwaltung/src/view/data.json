@@ -4,7 +4,7 @@
             "id": "Id",
             "object_id": "Object Id",
             "street": "Street",
-            "house_nr": "House Number",
+            "house_nr": "House Nr.",
             "stiege": "Stiege",
             "plz": "PLZ",
             "city": "City",

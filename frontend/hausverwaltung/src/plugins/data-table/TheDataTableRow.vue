@@ -1,10 +1,12 @@
 <template>
-    <tr v-for="(row, rowIndex) in tableBody" :key="rowIndex">
-        <td v-for="(item, index) in Object.values(row)" :key="index">{{ item }}</td>
-    </tr>
-    <tr v-if="tableBody.length === 0">
-        <td colspan="number_of_columns">No data available</td>
-    </tr>
+    <tbody class="border-b  text-center divide-y">
+        <tr v-for="(row, rowIndex) in tableBody" :key="rowIndex" class="h-14 hover:bg-neutral-200 ease-in-out duration-200">
+            <td v-for="(item, index) in Object.values(row)" :key="index" class=" ">{{ item }}</td>
+        </tr>
+        <tr v-if="tableBody.length === 0">
+            <td colspan="number_of_columns">No data available</td>
+        </tr>
+    </tbody>
 </template>
 
 <script>

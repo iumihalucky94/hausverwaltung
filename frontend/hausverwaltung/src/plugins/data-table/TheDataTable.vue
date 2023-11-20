@@ -1,5 +1,5 @@
 <template>
-    <table :tableData="tableData">
+    <table :tableData="tableData" class="w-90w text-left text-sm font-light">
         <TheDataTableHeader :tableHeader="tableHeader" />
         <TheDataTableRow :tableBody="tableBody" />
     </table>

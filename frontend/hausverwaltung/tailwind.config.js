@@ -15,6 +15,10 @@ export default {
       },
       height: {
         '90': '90vh',
+      },
+      width: {
+        '80w': '80vw',
+        '90w': '90vw',
       }
     },
   },
