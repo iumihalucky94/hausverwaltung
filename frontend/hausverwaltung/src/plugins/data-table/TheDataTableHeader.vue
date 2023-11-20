@@ -1,15 +1,22 @@
 <template>
-    <div>
-        <h1>TheDataTableHeader</h1>
-    </div>
+    <tr>
+        <th v-for="(value, key) in tableHeaderValue" :key="key">{{ value }}</th>
+    </tr>
 </template>
 
 <script>
 export default {
-    setup() {
-
-
+    props: {
+        tableHeader: Object,
+        required: true
+    },
+    data() {
         return {}
+    },
+    computed: {
+        tableHeaderValue() {
+            return Object.values(this.tableHeader[0]);
+        }
     }
 }
 </script>

@@ -1,14 +1,16 @@
 <template>
-    <div>
-        <h1>TheDataTableRow</h1>
-    </div>
+    <tr>
+        <th v-for="(item, index) in tableBody" :key="index">{{ item }}</th>
+    </tr>
 </template>
 
 <script>
 export default {
-    setup() {
-
-
+    props: {
+        tableBody: Object,
+        required: true
+    },
+    data() {
         return {}
     }
 }
