@@ -1,5 +1,5 @@
 <template>
-    <table :tableData="tableData" @click="display_data">
+    <table :tableData="tableData">
         <TheDataTableHeader :tableHeader="tableHeader" />
         <TheDataTableRow :tableBody="tableBody" />
     </table>

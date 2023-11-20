@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="w-full h-90 flex justify-center align-center">
         <TheDataTable :tableData="data" />
     </section>
 </template>
