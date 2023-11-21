@@ -11,7 +11,8 @@
             "country": "Country",
             "appartment_nr": "Apt.",
             "notes": "Notes",
-            "manager": "Manager"
+            "manager": "Manager",
+            "text": "updated"
         }
     ],
     "body": [
