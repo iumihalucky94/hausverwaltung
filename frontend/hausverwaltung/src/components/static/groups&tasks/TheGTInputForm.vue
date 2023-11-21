@@ -3,7 +3,8 @@
         <p class="font-bold text-xl text-secondary mb-2">Please choose what you want to create:</p>
         <TheGTRadio :radioValue="selectValues" @selected="handleSelected" />
         <TheGTSelect v-if="selectedValue === 'Tasks'" :listOfGroupsAndTasks="listOfGT" />
-        <TheGTInputField inputLabel="Name:" inputName="nameInput" @inputValue="someModelValue" />
+        <TheInputField inputLabel="Name:" inputName="nameInput" @inputValue="someModelValue"
+            inputPlaceholder="Group or Task name" />
         <div>
             <TheSaveConfirmButton btnText="Save" />
         </div>
@@ -13,8 +14,9 @@
 <script>
 import TheGTRadio from './TheGTRadio.vue';
 import TheGTSelect from './TheGTSelect.vue';
-import TheGTInputField from './TheGTInputField.vue';
+import TheInputField from '../TheInputField.vue';
 import TheSaveConfirmButton from '../../buttons/TheSaveConfirmButton.vue';
+
 
 export default {
     props: {
@@ -26,7 +28,7 @@ export default {
     components: {
         TheGTRadio,
         TheGTSelect,
-        TheGTInputField,
+        TheInputField,
         TheSaveConfirmButton
     },
     data() {

@@ -6,6 +6,7 @@ import Home from '@/view/Home.vue'
 import TheNavBar from '@/components/static/TheNavBar.vue'
 import TheTasks from '@/view/TheTasks.vue'
 import TheObjekts from '@/view/TheObjekts.vue'
+import TheLogin from '@/view/TheLogin.vue'
 
 export default [
     {
@@ -46,6 +47,13 @@ export default [
             nav: TheNavBar,
             main: TheObjekts,
             // footer:,
+        }
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        components: {
+            main: TheLogin,
         }
     }
 ]
