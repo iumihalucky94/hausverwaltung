@@ -1,11 +1,12 @@
 <template>
-    <section class="w-full h-full flex px-24">
-        <div class="w-full h-full flex justify-center items-center flex-col">
-            <p class="text-2xl underline text-thirdly">List of Groups and Tasks</p>
+    <section class="w-full h-full flex px-24 my-10">
+        <div class="w-full h-full flex justify-center items-center flex-col bg-gray-100/50 rounded-3xl mx-2">
+            <p class="text-2xl underline text-thirdly my-4">List of Groups and Tasks</p>
             <TheGT :groupsAndTasks="data" />
         </div>
-        <div class="w-full h-full flex justify-center items-center">
-            Create new task or group
+        <div class="w-full h-full flex justify-center items-center flex-col bg-gray-100/50 rounded-3xl mx-2">
+            <p class="text-2xl underline text-thirdly my-4">Create new task or group</p>
+            <TheGTInputForm :listOfGT="groupKeys" />
         </div>
     </section>
 </template>
@@ -13,14 +14,21 @@
 <script>
 import groupsTasks from './objektgroup.json'
 import TheGT from '../components/static/groups&tasks/TheGT.vue';
+import TheGTInputForm from '../components/static/groups&tasks/TheGTInputForm.vue'
+
 export default {
     components: {
-        TheGT
+        TheGT,
+        TheGTInputForm
     },
     data() {
+        const data = groupsTasks;
+        const groupKeys = Object.keys(data);
+
         return {
-            data: groupsTasks
-        }
+            data,
+            groupKeys,
+        };
     }
 }
 </script>

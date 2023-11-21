@@ -11,7 +11,8 @@ export default {
       colors: {
         primary: '#EFF5F5',
         secondary: '#6C8B95',
-        thirdly: '#85BE63'
+        thirdly: '#85BE63',
+        thirdlyh: '#5b8a3f'
       },
       height: {
         '90': '90vh',
