@@ -1,0 +1,47 @@
+{
+    "Bauteile": [
+        "Fassadenkontrolle",
+        "Balkon-/Terrassenkontrolle",
+        "Haustorwartung",
+        "Außentürenwartung",
+        "Garagentorwartung",
+        "Parkschrankenwartung",
+        "STG-Fenster Wartung",
+        "Dachflächenwartung",
+        "Dachrinnenreinigung",
+        "Überprüfung Blitzschutz",
+        "Überprüfung Dachsicherungen"
+    ],
+    "Objekt-Innenbereich": [
+        "Kontrolle Beleuchtung/Fluchtschilder",
+        "Überprüfung Fenstersicherungen",
+        "Innentürwartung",
+        "Fensterwartung STG",
+        "Überprüfung Löschwasserversorgung",
+        "Überprüfung Feuerlöscher",
+        "Wartung RWA-Anlage",
+        "Wartung Lüftungsanlage",
+        "Heizungsanlage",
+        "Steuerung Elektrik",
+        "Gas-Steigleitung G12 Übprüfung",
+        "Elektro-Steigleitung Ö-Norm 8015",
+        "Wartung Druckbelüftung",
+        "Wartung DG Ausstiegsluken",
+        "Wartung Haustechnik",
+        "Rückflussverhinderer"
+    ],
+    "Sonstige Wartungsarbeiten": [
+        "Sonstige Wartungsarbeiten",
+        "Garagenreinigung",
+        "Garagenkehrung",
+        "Laubkehren",
+        "Grünpflege Parkplatz",
+        "Grünpflege Hof",
+        "Grünpflege Dach",
+        "Außenbewässerung Aufschaltung Sommer",
+        "Außenbewässerung Einwinterung",
+        "Begeh-Card Wartung",
+        "Filtertausch Lüftungsanlage",
+        "Ablaufreinigung Rinnkessel"
+    ]
+}

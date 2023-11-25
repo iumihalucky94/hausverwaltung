@@ -1,8 +1,7 @@
 <template>
-    <div>
-        Botton
-
-    </div>
+    <section>
+        <h1>Mandant List</h1>
+    </section>
 </template>
 
 <script>
@@ -15,4 +14,4 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped></style>
