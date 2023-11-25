@@ -28,7 +28,7 @@ export default {
     methods: {
         clickHandler() {
             console.log(1)
-            this.$router.push({ name: 'Create_object' });
+            // this.$router.push({ name: 'Create_object' });
         }
     }
 }

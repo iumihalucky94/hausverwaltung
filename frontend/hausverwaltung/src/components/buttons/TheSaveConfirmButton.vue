@@ -16,7 +16,6 @@ export default {
         },
         routeName: {
             type: String,
-            required: true
         },
         navigate: {
             type: Boolean,

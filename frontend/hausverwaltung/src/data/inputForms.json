@@ -1,0 +1,62 @@
+{
+    "create_object": [
+        {
+            "inputLabel": "ID: ",
+            "inputName": "object_id",
+            "inputPlaceholder": "Object ID",
+            "isRequired": true
+        },
+        {
+            "inputLabel": "Street: ",
+            "inputName": "street",
+            "inputPlaceholder": "Object Street",
+            "isRequired": true
+        },
+        {
+            "inputLabel": "House Nr: ",
+            "inputName": "house_nr",
+            "inputPlaceholder": "House Number",
+            "isRequired": true
+        },
+        {
+            "inputLabel": "Stiege: ",
+            "inputName": "stiege",
+            "inputPlaceholder": "House Stiege",
+            "isRequired": true
+        },
+        {
+            "inputLabel": "PLZ: ",
+            "inputName": "zip",
+            "inputPlaceholder": "Object PLZ",
+            "isRequired": true
+        },
+        {
+            "inputLabel": "City: ",
+            "inputName": "city",
+            "inputPlaceholder": "City of Object",
+            "isRequired": true
+        },
+        {
+            "inputLabel": "Country: ",
+            "inputName": "country",
+            "inputPlaceholder": "Country of Object",
+            "isRequired": true
+        },
+        {
+            "inputLabel": "App. Nr: ",
+            "inputName": "app_nr",
+            "inputPlaceholder": "Apartment Nr."
+        },
+        {
+            "inputLabel": "Notes: ",
+            "inputName": "notes",
+            "inputPlaceholder": "Related notes"
+        },
+        {
+            "inputLabel": "Manager: ",
+            "inputName": "manager",
+            "inputPlaceholder": "Manager of the Object",
+            "isRequired": true
+        }
+    ]
+}

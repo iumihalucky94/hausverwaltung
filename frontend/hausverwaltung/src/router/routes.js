@@ -45,6 +45,34 @@ export default [
             // footer:,
         }
     },
+    // {
+    //     path: '/objects',
+    //     name: 'Objekte',
+    //     components: {
+    //         nav: TheNavBar,
+    //         main: TheObjekts,
+    //         // footer:,
+    //     },
+    //     children: [
+    //         {
+    //             path: 'edit/:object_id',
+    //             name: 'Edit_object',
+    //             components: {
+    //                 nav: TheNavBar,
+    //                 main: TheEditObject
+    //             }
+    //         },
+    //         {
+    //             path: 'create',
+    //             name: 'Create_object',
+    //             components: {
+    //                 nav: TheNavBar,
+    //                 main: TheCreateObject
+    //             }
+    //         },
+    //     ]
+    // },
+
     {
         path: '/objects',
         name: 'Objekte',
