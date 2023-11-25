@@ -48,16 +48,41 @@ export default [
             nav: TheNavBar,
             main: TheObjekts,
             // footer:,
-        }
+        },
+        children: [
+            {
+                path: 'edit/:object_id',  // Corrected path
+                name: 'Objekte_edit',
+                components: {
+                    nav: TheNavBar,
+                    main: TheObjekts,
+                }
+            }
+        ]
     },
     {
-        path: '/mandant_list',
-        name: 'Mandant List',
-        components: {
-            nav: TheNavBar,
-            main: TheMandantList,
-            // footer:,
-        }
+        path: '/mandant',
+        name: 'mandant',
+        children: [
+            {
+                path: 'list',
+                name: 'Mandant_List',
+                components: {
+                    nav: TheNavBar,
+                    main: TheMandantList,
+                    // footer:,
+                },
+            },
+            {
+                path: 'edit/:object_id',
+                name: 'Mandant_Edit',
+                components: {
+                    nav: TheNavBar,
+                    main: TheMandantList,
+                    // footer:,
+                },
+            },
+        ],
     },
     {
         path: '/login',

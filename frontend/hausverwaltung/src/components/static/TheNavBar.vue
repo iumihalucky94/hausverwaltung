@@ -22,7 +22,7 @@
                     <router-link :to="{ path: '/tasks' }">
                         <li class="hover:text-thirdly">Tasks</li>
                     </router-link>
-                    <router-link :to="{ path: '/mandant_list' }">
+                    <router-link :to="{ path: '/mandant/list' }">
                         <li class="hover:text-thirdly">Mandant</li>
                     </router-link>
                     <router-link :to="{ path: '/login' }">
