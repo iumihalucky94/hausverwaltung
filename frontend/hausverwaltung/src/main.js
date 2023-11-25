@@ -11,10 +11,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // Import list of icons
-import { faUserSecret, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faArrowRightFromBracket, faHouse, faListCheck } from '@fortawesome/free-solid-svg-icons'
 
 // Adding icon to usage library
-library.add(faUserSecret, faArrowRightFromBracket)
+library.add(faUserSecret, faArrowRightFromBracket, faHouse, faListCheck)
 
 /* add font awesome icon component */
 

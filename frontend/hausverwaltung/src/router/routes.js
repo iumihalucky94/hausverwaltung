@@ -7,6 +7,7 @@ import TheNavBar from '@/components/static/TheNavBar.vue'
 import TheTasks from '@/view/TheTasks.vue'
 import TheObjekts from '@/view/TheObjekts.vue'
 import TheLogin from '@/view/TheLogin.vue'
+import TheMandantList from '@/view/TheMandantList.vue'
 
 export default [
     {
@@ -46,6 +47,15 @@ export default [
         components: {
             nav: TheNavBar,
             main: TheObjekts,
+            // footer:,
+        }
+    },
+    {
+        path: '/mandant_list',
+        name: 'Mandant List',
+        components: {
+            nav: TheNavBar,
+            main: TheMandantList,
             // footer:,
         }
     },
