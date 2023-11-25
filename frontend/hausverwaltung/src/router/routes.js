@@ -5,7 +5,11 @@ import Home from '@/view/Home.vue'
 // import Calendar from '@/view/TheCalendar.vue'
 import TheNavBar from '@/components/static/TheNavBar.vue'
 import TheTasks from '@/view/TheTasks.vue'
-import TheObjekts from '@/view/TheObjekts.vue'
+
+import TheObjekts from '@/view/object/TheObjekts.vue'
+import TheCreateObject from '@/view/object/TheCreateObject.vue'
+import TheEditObject from '@/view/object/TheEditObject.vue'
+
 import TheLogin from '@/view/TheLogin.vue'
 import TheMandantList from '@/view/TheMandantList.vue'
 
@@ -51,14 +55,22 @@ export default [
         },
         children: [
             {
-                path: 'edit/:object_id',  // Corrected path
-                name: 'Objekte_edit',
+                path: 'edit/:object_id',
+                name: 'Edit_object',
                 components: {
                     nav: TheNavBar,
-                    main: TheObjekts,
+                    main: TheEditObject
                 }
-            }
+            },
         ]
+    },
+    {
+        path: '/objects/create',
+        name: 'Create_object',
+        components: {
+            nav: TheNavBar,
+            main: TheCreateObject
+        }
     },
     {
         path: '/mandant',
