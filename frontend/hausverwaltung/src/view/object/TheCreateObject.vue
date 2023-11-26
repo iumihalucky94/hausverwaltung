@@ -3,12 +3,10 @@
         <form @submit.prevent
             class="w-1/2 h-2/3 px-32 border-solid border-2 bg-primary rounded-3xl flex justify-center items-center flex-col">
             <TheSectionHeader headerText="Create new Object" class="text-center mb-10" />
-
             <div v-for="(field, index) in inputFormsList.create_object" :key="index" class="w-full">
                 <TheInputField class="text-secondary" :inputLabel="field.inputLabel" :inputName="field.inputName"
                     :inputPlaceholder="field.inputPlaceholder" :isRequired="field.isRequired" @input="getDataFromChild" />
             </div>
-
             <TheSaveConfirmButton btnText="Create new flat" :navigate="false" class="mt-10" @click="storeData" />
         </form>
     </section>

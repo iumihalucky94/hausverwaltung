@@ -43,7 +43,7 @@ export default [
         components: {
             nav: TheNavBar,
             main: TheTasks,
-            // footer:,
+            // footer:1,
         }
     },
     {
