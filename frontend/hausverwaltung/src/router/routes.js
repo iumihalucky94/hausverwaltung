@@ -11,7 +11,8 @@ import TheCreateObject from '@/view/object/TheCreateObject.vue'
 import TheEditObject from '@/view/object/TheEditObject.vue'
 
 import TheLogin from '@/view/TheLogin.vue'
-import TheMandantList from '@/view/TheMandantList.vue'
+
+import TheMandantList from '@/view/mandant/TheMandants.vue'
 
 export default [
     {
@@ -45,34 +46,6 @@ export default [
             // footer:,
         }
     },
-    // {
-    //     path: '/objects',
-    //     name: 'Objekte',
-    //     components: {
-    //         nav: TheNavBar,
-    //         main: TheObjekts,
-    //         // footer:,
-    //     },
-    //     children: [
-    //         {
-    //             path: 'edit/:object_id',
-    //             name: 'Edit_object',
-    //             components: {
-    //                 nav: TheNavBar,
-    //                 main: TheEditObject
-    //             }
-    //         },
-    //         {
-    //             path: 'create',
-    //             name: 'Create_object',
-    //             components: {
-    //                 nav: TheNavBar,
-    //                 main: TheCreateObject
-    //             }
-    //         },
-    //     ]
-    // },
-
     {
         path: '/objects',
         name: 'Objekte',
@@ -81,16 +54,14 @@ export default [
             main: TheObjekts,
             // footer:,
         },
-        children: [
-            {
-                path: 'edit/:object_id',
-                name: 'Edit_object',
-                components: {
-                    nav: TheNavBar,
-                    main: TheEditObject
-                }
-            },
-        ]
+    },
+    {
+        path: '/objects/edit/:object_id',
+        name: 'Edit_object',
+        components: {
+            nav: TheNavBar,
+            main: TheEditObject
+        }
     },
     {
         path: '/objects/create',
@@ -102,27 +73,30 @@ export default [
     },
     {
         path: '/mandant',
-        name: 'mandant',
-        children: [
-            {
-                path: 'list',
-                name: 'Mandant_List',
-                components: {
-                    nav: TheNavBar,
-                    main: TheMandantList,
-                    // footer:,
-                },
-            },
-            {
-                path: 'edit/:object_id',
-                name: 'Mandant_Edit',
-                components: {
-                    nav: TheNavBar,
-                    main: TheMandantList,
-                    // footer:,
-                },
-            },
-        ],
+        name: 'Mandant_List',
+        components: {
+            nav: TheNavBar,
+            main: TheMandantList,
+            // footer:,
+        },
+    },
+    {
+        path: '/mandant/edit/:object_id',
+        name: 'Mandant_Edit',
+        components: {
+            nav: TheNavBar,
+            main: TheMandantList,
+            // footer:,
+        },
+    },
+    {
+        path: '/mandant/create/:object_id',
+        name: 'Mandant_Create',
+        components: {
+            nav: TheNavBar,
+            main: TheMandantList,
+            // footer:,
+        },
     },
     {
         path: '/login',
