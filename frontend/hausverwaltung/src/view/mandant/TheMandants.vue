@@ -1,7 +1,7 @@
 <template>
-    <section>
-        <h1>Mandant List</h1>
-    </section>
+    <div>
+        Mandant List new
+    </div>
 </template>
 
 <script>

@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import groupsTasks from './objektgroup.json'
+import groupsTasks from '@/data/objektgroup.json'
 import TheGT from '../components/static/groups&tasks/TheGT.vue';
 import TheGTInputForm from '../components/static/groups&tasks/TheGTInputForm.vue'
 

@@ -43,8 +43,7 @@ export default {
     },
     methods: {
         handleInput() {
-            this.$emit('input', this.inputValue);
-            console.log(this.inputValue)
+            this.$emit('input', [this.inputName, this.inputValue]);
         },
     },
 };

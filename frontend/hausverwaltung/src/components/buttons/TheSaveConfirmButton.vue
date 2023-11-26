@@ -27,15 +27,16 @@ export default {
             if (this.navigate) {
                 // Trigger route navigation based on the passed routeName prop
                 this.$router.push({ name: this.routeName });
-            } else {
-                // Perform other action, e.g., save data
-                this.saveData();
             }
+            // else {
+            //     // Perform other action, e.g., save data
+            //     this.saveData();
+            // }
         },
-        saveData() {
-            // Implement your save data logic here
-            console.log('Data saved!');
-        }
+        // saveData() {
+        //     // Implement your save data logic here
+        //     console.log('Data saved!');
+        // }
     }
 }
 </script>

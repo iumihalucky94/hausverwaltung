@@ -45,12 +45,14 @@
         {
             "inputLabel": "App. Nr: ",
             "inputName": "app_nr",
-            "inputPlaceholder": "Apartment Nr."
+            "inputPlaceholder": "Apartment Nr.",
+            "isRequired": false
         },
         {
             "inputLabel": "Notes: ",
             "inputName": "notes",
-            "inputPlaceholder": "Related notes"
+            "inputPlaceholder": "Related notes",
+            "isRequired": false
         },
         {
             "inputLabel": "Manager: ",
