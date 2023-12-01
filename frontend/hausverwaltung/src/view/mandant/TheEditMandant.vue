@@ -1,14 +1,12 @@
 <template>
-    <div>
-        Edit
-    </div>
+    <section>
+        <p>Edit Mandant</p>
+    </section>
 </template>
 
 <script>
 export default {
     data() {
-
-
         return {}
     }
 }

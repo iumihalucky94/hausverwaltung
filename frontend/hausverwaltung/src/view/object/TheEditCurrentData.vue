@@ -1,0 +1,57 @@
+<template>
+    <section class="flex w-full ">
+        <div v-if="!loading">
+            <div class="w-full">
+                <TheSectionHeader headerText="Current data" class="text-center mb-10" />
+                <div v-for="(field, index) in inputFormsList.create_object" :key="index" class=" mb-4 px-2 ">
+                    <TheInputField class="text-secondary w-full" :inputLabel="field.inputLabel" :inputName="field.inputName"
+                        :inputPlaceholder="field.inputPlaceholder" :disable_validated="true"
+                        :passedInputValue="dataList[0][field.inputName]" />
+                </div>
+            </div>
+        </div>
+        <div v-else>
+            <p>Loading ...</p>
+        </div>
+    </section>
+</template>
+
+<script>
+import TheSectionHeader from '@/components/static/TheSectionHeader.vue';
+import TheInputField from '@/components/static/TheInputField.vue';
+import inputFormsData from '@/data/data.json';
+import inputForms from '@/data/inputForms.json'
+
+export default {
+    components: {
+        TheSectionHeader,
+        TheInputField,
+
+    },
+    data() {
+        return {
+            inputFormsList: inputForms,
+            dataList: inputFormsData,
+            objectIdURL: '',
+            loading: true,
+        }
+    },
+    methods: {
+        getDesiredObjectFromJSONByID(id) {
+            return inputFormsData.body.filter(object => object.object_id === id);
+        },
+    },
+    async created() {
+        this.objectIdURL = this.$router.currentRoute._rawValue.params.object_id;
+        this.dataList = this.getDesiredObjectFromJSONByID(this.objectIdURL);
+        try {
+            this.dataList = await this.getDesiredObjectFromJSONByID(this.objectIdURL);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        } finally {
+            this.loading = false;
+            this.$emit('currentData', this.dataList[0]);
+        }
+    }
+}
+</script>

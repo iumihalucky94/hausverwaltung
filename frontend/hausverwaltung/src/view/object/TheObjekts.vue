@@ -14,6 +14,7 @@
 <script>
 import TheDataTable from '@/plugins/data-table/TheDataTable.vue';
 import TheSaveConfirmButton from '@/components/buttons/TheSaveConfirmButton.vue';
+
 import data from '@/data/data.json'
 export default {
     components: {

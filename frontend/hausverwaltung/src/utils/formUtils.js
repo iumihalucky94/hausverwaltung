@@ -35,3 +35,30 @@ export function checkRequiredFields(jsonData, inputFormsList, propertyName) {
         return true;
     }
 }
+
+export function updateValuesFromB(jsonA, jsonB) {
+    console.log(jsonA, jsonB)
+    // Check if jsonA and jsonB are equal
+    // if (JSON.stringify(jsonA) === JSON.stringify(jsonB)) {
+    if (JSON.stringify(jsonA) === JSON.stringify(jsonB)) {
+        return 1; // Return "1" if they are equal
+    }
+
+    // Check if jsonB is empty
+    console.log(Object.keys(jsonB).length)
+    if (Object.keys(jsonB).length === 0) {
+        return 2; // Return "2" if jsonB is empty
+    }
+
+    // Iterate over the keys in A
+    for (let key in jsonA) {
+        // Check if the key exists in B
+        if (jsonB.hasOwnProperty(key)) {
+            // Update the value in A with the value from B
+            jsonA[key] = jsonB[key];
+        }
+    }
+
+    // Return the updated JSON A
+    return jsonA;
+}

@@ -26,7 +26,7 @@
         },
         {
             "inputLabel": "PLZ: ",
-            "inputName": "zip",
+            "inputName": "plz",
             "inputPlaceholder": "Object PLZ",
             "isRequired": true
         },
@@ -44,7 +44,7 @@
         },
         {
             "inputLabel": "App. Nr: ",
-            "inputName": "app_nr",
+            "inputName": "appartment_nr",
             "inputPlaceholder": "Apartment Nr.",
             "isRequired": false
         },
@@ -59,6 +59,58 @@
             "inputName": "manager",
             "inputPlaceholder": "Manager of the Object",
             "isRequired": true
+        }
+    ],
+    "edit_object": [
+        {
+            "inputLabel": "ID: ",
+            "inputName": "edit_object_id",
+            "inputPlaceholder": "New Object ID"
+        },
+        {
+            "inputLabel": "Street: ",
+            "inputName": "edit_street",
+            "inputPlaceholder": "New bject Street"
+        },
+        {
+            "inputLabel": "House Nr: ",
+            "inputName": "edit_house_nr",
+            "inputPlaceholder": "New House Number"
+        },
+        {
+            "inputLabel": "Stiege: ",
+            "inputName": "edit_stiege",
+            "inputPlaceholder": "New House Stiege"
+        },
+        {
+            "inputLabel": "PLZ: ",
+            "inputName": "edit_plz",
+            "inputPlaceholder": "New Object PLZ"
+        },
+        {
+            "inputLabel": "City: ",
+            "inputName": "edit_city",
+            "inputPlaceholder": "New City of Object"
+        },
+        {
+            "inputLabel": "Country: ",
+            "inputName": "edit_country",
+            "inputPlaceholder": "New Country of Object"
+        },
+        {
+            "inputLabel": "App. Nr: ",
+            "inputName": "edit_appartment_nr",
+            "inputPlaceholder": "New Apartment Nr."
+        },
+        {
+            "inputLabel": "Notes: ",
+            "inputName": "edit_notes",
+            "inputPlaceholder": "New Related notes"
+        },
+        {
+            "inputLabel": "Manager: ",
+            "inputName": "edit_manager",
+            "inputPlaceholder": "New Manager of the Object"
         }
     ]
 }
