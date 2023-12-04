@@ -1,11 +1,17 @@
 <template>
-    <div>
-        Mandant List new
-    </div>
+    <section class="flex justify-center">
+        <TheMandantTable />
+    </section>
 </template>
 
 <script>
+
+import TheMandantTable from '@/plugins/mandant-table/TheMandantTable.vue';
+
 export default {
+    components: {
+        TheMandantTable
+    },
     data() {
 
 

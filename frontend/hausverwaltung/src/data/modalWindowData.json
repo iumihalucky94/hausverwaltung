@@ -1,0 +1,9 @@
+{
+    "deleteWindowText": {
+        "modalText": "Delete Record",
+        "hintText": "This action will destroy all relationships",
+        "cancelText": "Cancel",
+        "confirmText": "Confirm"
+    },
+    "editWindowText": {}
+}

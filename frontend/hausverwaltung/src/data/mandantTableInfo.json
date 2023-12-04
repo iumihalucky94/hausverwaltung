@@ -1,0 +1,107 @@
+{
+    "header": [
+        {
+            "name": "Task/Objects",
+            "belongs": "task_object"
+        },
+        {
+            "name": "Supplier",
+            "belongs": "supplier"
+        },
+        {
+            "name": "Send Date",
+            "belongs": "send_date"
+        },
+        {
+            "name": "Reminder Date",
+            "belongs": "send_reminder_date"
+        },
+        {
+            "name": "Deadline",
+            "belongs": "deadline"
+        },
+        {
+            "name": "Frequency",
+            "belongs": "frequency"
+        },
+        {
+            "name": "Mail Template",
+            "belongs": "mail_template"
+        },
+        {
+            "name": "Related with weather",
+            "belongs": "manager"
+        }
+    ],
+    "body": [
+        {
+            "inputName": "task_object",
+            "inputType": "text",
+            "inputPlaceholder": ""
+        },
+        {
+            "inputName": "supplier_name",
+            "inputType": "select_supplier",
+            "inputPlaceholder": "Select Supplier"
+        },
+        {
+            "inputName": "send_date",
+            "inputType": "date",
+            "inputPlaceholder": "Select Date"
+        },
+        {
+            "inputName": "send_reminder_date",
+            "inputType": "date",
+            "inputPlaceholder": "Select date for reminder"
+        },
+        {
+            "inputName": "deadline",
+            "inputType": "date",
+            "inputPlaceholder": "Select date, when request should be done"
+        },
+        {
+            "inputName": "frequency",
+            "inputType": "text",
+            "inputPlaceholder": "How often this task should happened"
+        },
+        {
+            "inputName": "weather_relation",
+            "inputType": "select_weather",
+            "inputPlaceholder": ""
+        }
+    ],
+    "select_supplier": [
+        "Marco GmbH",
+        "OTFM GmbH",
+        "QuantumSolutions GmbH",
+        "BlueWave Technologies GmbH",
+        "SilverPeak Innovations GmbH",
+        "Evergreen Ventures GmbH",
+        "Apex Dynamics GmbH",
+        "TerraNova Solutions GmbH",
+        "Phoenix Innovations GmbH",
+        "Zenith Enterprises GmbH",
+        "Cascade Systems GmbH",
+        "Stellar Insights GmbH",
+        "Elysium Holdings GmbH",
+        "Nimbus Creations GmbH",
+        "Equinox Dynamics GmbH",
+        "Fusion Catalyst GmbH",
+        "Horizon Ventures GmbH",
+        "Radiant Nexus GmbH",
+        "Vertex Innovations GmbH",
+        "Nebula Strategies GmbH",
+        "Empyrean Solutions GmbH",
+        "Celestial Holdings GmbH"
+    ],
+    "select_weather": [
+        "Snow",
+        "Rain",
+        "Sun",
+        "Cloud",
+        "Under 5 deg.C",
+        "Under 0 deg.C",
+        "Over 20 deg.C",
+        "Over 30 deg.C"
+    ]
+}
