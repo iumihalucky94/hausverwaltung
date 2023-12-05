@@ -112,5 +112,6 @@
             "inputName": "edit_manager",
             "inputPlaceholder": "New Manager of the Object"
         }
-    ]
+    ],
+    "supplier": []
 }

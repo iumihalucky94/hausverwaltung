@@ -14,6 +14,8 @@ import TheLogin from '@/view/TheLogin.vue'
 
 import TheMandantList from '@/view/mandant/TheMandants.vue'
 
+import TheSupplierList from '@/view/supplier/TheSupplierList.vue'
+
 export default [
     {
         path: '/',
@@ -46,6 +48,7 @@ export default [
             // footer:1,
         }
     },
+    // Objects 
     {
         path: '/objects',
         name: 'Objekte',
@@ -71,6 +74,7 @@ export default [
             main: TheCreateObject
         }
     },
+    // Mandants
     {
         path: '/mandant',
         name: 'Mandant_List',
@@ -95,6 +99,16 @@ export default [
         components: {
             nav: TheNavBar,
             main: TheMandantList,
+            // footer:,
+        },
+    },
+    // Suppliers
+    {
+        path: '/supplier/list',
+        name: 'supplier_list',
+        components: {
+            nav: TheNavBar,
+            main: TheSupplierList,
             // footer:,
         },
     },

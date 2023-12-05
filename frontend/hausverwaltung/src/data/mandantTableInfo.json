@@ -5,7 +5,7 @@
             "belongs": "task_object"
         },
         {
-            "name": "Supplier",
+            "name": "Supplier Name",
             "belongs": "supplier"
         },
         {

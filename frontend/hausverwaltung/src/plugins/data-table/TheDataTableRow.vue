@@ -17,7 +17,6 @@
                     @click="deleteItem(row)" :showModal="true">
                     <fai icon="fa-solid fa-trash" class="text-white" />
                 </button>
-
             </td>
         </tr>
         <tr v-if="tableBody.length === 0">
@@ -30,7 +29,6 @@
 </template>
 
 <script>
-
 
 export default {
     props: {

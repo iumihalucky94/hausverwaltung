@@ -28,6 +28,9 @@
                     <router-link :to="{ path: '/login' }">
                         <li class="hover:text-thirdly">Login</li>
                     </router-link>
+                    <router-link :to="{ path: '/supplier/list' }">
+                        <li class="hover:text-thirdly">Supplier</li>
+                    </router-link>
 
                 </ul>
             </div>

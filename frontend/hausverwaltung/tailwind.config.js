@@ -4,6 +4,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    './app/**/*.{html,js,ts,jsx,tsx}',
     "./src/assets/styles/**/*.scss",
   ],
   theme: {
@@ -25,12 +26,14 @@ export default {
       width: {
         '80w': '80vw',
         '90w': '90vw',
+        '95w': '95vw',
+        '95%': '95%',
       },
       backgroundImage: {
         'loginBG': "url('@/assets/images/bg.webp')"
       }
     },
   },
-  plugins: [],
+
 }
 
