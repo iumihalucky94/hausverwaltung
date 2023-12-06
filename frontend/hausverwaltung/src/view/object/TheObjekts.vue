@@ -12,10 +12,11 @@
 </template>
 
 <script>
-import TheDataTable from '@/plugins/data-table/TheDataTable.vue';
+import TheDataTable from '@/plugins/objects-table/TheDataTable.vue';
 import TheSaveConfirmButton from '@/components/buttons/TheSaveConfirmButton.vue';
 
-import data from '@/data/data.json'
+import data from '@/data/tableData.json'
+
 export default {
     components: {
         TheDataTable,
@@ -23,7 +24,7 @@ export default {
     },
     data() {
         return {
-            data: data
+            data: data.object_list
         }
     },
     methods: {

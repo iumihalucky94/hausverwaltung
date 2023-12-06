@@ -1,0 +1,180 @@
+{
+    "supplier": {
+        "header": [
+            {
+                "name": "Name",
+                "id": "supplier_name"
+            },
+            {
+                "name": "Address",
+                "id": "supplier_address"
+            },
+            {
+                "name": "Email",
+                "id": "supplier_email"
+            },
+            {
+                "name": "Contact Person",
+                "id": "supplier_cp_name"
+            },
+            {
+                "name": "Mail template",
+                "id": "supplier_mail"
+            },
+            {
+                "name": "Status",
+                "id": "supplier_status"
+            }
+        ]
+    },
+    "object_list": {
+        "header": [
+            {
+                "id": "Id",
+                "object_id": "Object Id",
+                "street": "Street",
+                "house_nr": "House Nr.",
+                "stiege": "Stiege",
+                "plz": "PLZ",
+                "city": "City",
+                "country": "Country",
+                "appartment_nr": "Apt.",
+                "notes": "Notes",
+                "manager": "Manager",
+                "update": "Edit"
+            }
+        ],
+        "body": [
+            {
+                "id": 1,
+                "object_id": "ABC123",
+                "street": "123 Maple St",
+                "house_nr": 1,
+                "stiege": "A",
+                "plz": 12345,
+                "city": "Cityville",
+                "country": "Countryland",
+                "appartment_nr": "Apt 101",
+                "notes": "Some notes about the house",
+                "manager": "John Doe"
+            },
+            {
+                "id": 2,
+                "object_id": "DEF456",
+                "street": "456 Oak St",
+                "house_nr": 2,
+                "stiege": "B",
+                "plz": 54321,
+                "city": "Townsville",
+                "country": "Countryland",
+                "appartment_nr": "Apt 202",
+                "notes": "Other notes about the house",
+                "manager": "Jane Smith"
+            },
+            {
+                "id": 3,
+                "object_id": "GHI789",
+                "street": "789 Pine St",
+                "house_nr": 3,
+                "stiege": "C",
+                "plz": 98765,
+                "city": "Villageton",
+                "country": "Countryland",
+                "appartment_nr": "Apt 303",
+                "notes": "Additional notes about the house",
+                "manager": "Bob Johnson"
+            },
+            {
+                "id": 4,
+                "object_id": "JKL012",
+                "street": "101 Elm St",
+                "house_nr": 4,
+                "stiege": "D",
+                "plz": 10987,
+                "city": "Hamletville",
+                "country": "Countryland",
+                "appartment_nr": "Apt 404",
+                "notes": "Unique notes about the house",
+                "manager": "Alice Brown"
+            },
+            {
+                "id": 5,
+                "object_id": "MNO345",
+                "street": "202 Birch St",
+                "house_nr": 5,
+                "stiege": "E",
+                "plz": 54321,
+                "city": "Citytown",
+                "country": "Countryland",
+                "appartment_nr": "Apt 505",
+                "notes": "Special notes about the house",
+                "manager": "Charlie White"
+            },
+            {
+                "id": 6,
+                "object_id": "PQR678",
+                "street": "303 Cedar St",
+                "house_nr": 6,
+                "stiege": "F",
+                "plz": 87654,
+                "city": "Townborough",
+                "country": "Countryland",
+                "appartment_nr": "Apt 606",
+                "notes": "Test notes about the house",
+                "manager": "Eva Green"
+            },
+            {
+                "id": 7,
+                "object_id": "STU901",
+                "street": "404 Pine St",
+                "house_nr": 7,
+                "stiege": "G",
+                "plz": 21098,
+                "city": "Villageburg",
+                "country": "Countryland",
+                "appartment_nr": "Apt 707",
+                "notes": "Custom notes about the house",
+                "manager": "David Black"
+            },
+            {
+                "id": 8,
+                "object_id": "VWX234",
+                "street": "505 Elm St",
+                "house_nr": 8,
+                "stiege": "H",
+                "plz": 32109,
+                "city": "Cityvale",
+                "country": "Countryland",
+                "appartment_nr": "Apt 808",
+                "notes": "More notes about the house",
+                "manager": "Grace Grey"
+            },
+            {
+                "id": 9,
+                "object_id": "YZA567",
+                "street": "606 Oak St",
+                "house_nr": 9,
+                "stiege": "I",
+                "plz": 43210,
+                "city": "Towntown",
+                "country": "Countryland",
+                "appartment_nr": "Apt 909",
+                "notes": "Other notes about the house",
+                "manager": "Frank Red"
+            },
+            {
+                "id": 10,
+                "object_id": "BCD890",
+                "street": "707 Birch St",
+                "house_nr": 10,
+                "stiege": "J",
+                "plz": 54321,
+                "city": "Villagetown",
+                "country": "Countryland",
+                "appartment_nr": "Apt 1010",
+                "notes": "Different notes about the house",
+                "manager": "Helen Blue"
+            }
+        ]
+    }
+}

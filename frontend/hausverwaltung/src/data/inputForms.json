@@ -113,5 +113,34 @@
             "inputPlaceholder": "New Manager of the Object"
         }
     ],
-    "supplier": []
+    "supplier": [
+        {
+            "header": [
+                {
+                    "name": "Name",
+                    "id": "supplier_name"
+                },
+                {
+                    "name": "Address",
+                    "id": "supplier_address"
+                },
+                {
+                    "name": "Email",
+                    "id": "supplier_email"
+                },
+                {
+                    "name": "Contact Person",
+                    "id": "supplier_cp_name"
+                },
+                {
+                    "name": "Mail template",
+                    "id": "supplier_mail"
+                },
+                {
+                    "name": "Status",
+                    "id": "supplier_"
+                }
+            ]
+        }
+    ]
 }

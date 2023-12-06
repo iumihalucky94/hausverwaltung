@@ -19,7 +19,7 @@
 <script>
 import TheSectionHeader from '@/components/static/TheSectionHeader.vue';
 import TheInputField from '@/components/static/TheInputField.vue';
-import inputFormsData from '@/data/data.json';
+import inputFormsData from '@/data/tableData.json';
 import inputForms from '@/data/inputForms.json'
 
 export default {
@@ -38,10 +38,12 @@ export default {
     },
     methods: {
         getDesiredObjectFromJSONByID(id) {
-            return inputFormsData.body.filter(object => object.object_id === id);
+            console.log(inputFormsData.object_list)
+            return inputFormsData.object_list.body.filter(object => object.object_id === id);
         },
     },
     async created() {
+
         this.objectIdURL = this.$router.currentRoute._rawValue.params.object_id;
         this.dataList = this.getDesiredObjectFromJSONByID(this.objectIdURL);
         try {
