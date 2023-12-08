@@ -13,8 +13,8 @@
 
 <script>
 import groupsTasks from '@/data/objektgroup.json'
-import TheGT from '../components/static/groups&tasks/TheGT.vue';
-import TheGTInputForm from '../components/static/groups&tasks/TheGTInputForm.vue'
+import TheGT from '@/components/static/tables/task-group-table/item-task-group/TheGT.vue';
+import TheGTInputForm from '@/components/static/tables/task-group-table/item-task-group/TheGTInputForm.vue'
 
 export default {
     components: {

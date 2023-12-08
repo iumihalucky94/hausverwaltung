@@ -1,7 +1,7 @@
 <template>
     <section class="w-full h-full flex justify-center items-center">
         <div class=" min-w-10/12 min-h-10/11 flex  justify-center items-center">
-            <TheSectionHeader headerText="List of Suppliers" />
+            <!-- <TheSectionHeader headerText="List of Suppliers" /> -->
             <p @click="dataChecker">111111</p>
             <!-- <TheDefaulTableHeader :tableHeader="tableHeaderValue" /> -->
         </div>
@@ -10,13 +10,11 @@
 
 <script>
 import tableData from '@/data/inputForms.json'
-import TheSectionHeader from '@/components/static/TheSectionHeader.vue';
-import TheDefaulTableHeader from '@/components/static/table_unique/TheDefaulTableHeader.vue';
 
 export default {
     components: {
-        TheSectionHeader,
-        TheDefaulTableHeader
+        // TheSectionHeader,
+
     },
     data() {
         return {

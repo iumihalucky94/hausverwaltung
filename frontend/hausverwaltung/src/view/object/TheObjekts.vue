@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TheDataTable from '@/plugins/objects-table/TheDataTable.vue';
+import TheDataTable from '@/components/static/tables/object-table/TheDataTable.vue';
 import TheSaveConfirmButton from '@/components/buttons/TheSaveConfirmButton.vue';
 
 import data from '@/data/tableData.json'

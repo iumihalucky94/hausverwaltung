@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import TheGTRadio from './TheGTRadio.vue';
-import TheGTSelect from './TheGTSelect.vue';
-import TheInputField from '../TheInputField.vue';
-import TheSaveConfirmButton from '../../buttons/TheSaveConfirmButton.vue';
+import TheGTRadio from '@/components/static/tables/task-group-table/item-task-group/TheGTRadio.vue';
+import TheGTSelect from '@/components/static/tables/task-group-table/item-task-group/TheGTSelect.vue';
+import TheInputField from '@/components/static/TheInputField.vue';
+import TheSaveConfirmButton from '@/components/buttons/TheSaveConfirmButton.vue';
 
 
 export default {

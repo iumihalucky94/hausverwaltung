@@ -22,8 +22,8 @@
 
 <script>
 
-import TheMandantTableHeader from '@/plugins/mandant-table/TheMandantTableHeader.vue';
-import TheMandantTableRow from '@/plugins/mandant-table/TheMandantTableRow.vue';
+import TheMandantTableHeader from '@/components/static/tables/mandant/TheMandantTableHeader.vue';
+import TheMandantTableRow from '@/components/static/tables/mandant/TheMandantTableRow.vue';
 import mandantTableInfo from '@/data/mandantTableInfo.json'
 import groupAndTasksList from '@/data/objektgroup.json'
 import mandantPlaneData from '@/data/mandantPlaneData.json'

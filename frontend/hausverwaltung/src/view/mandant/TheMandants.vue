@@ -6,7 +6,7 @@
 
 <script>
 
-import TheMandantTable from '@/plugins/mandant-table/TheMandantTable.vue';
+import TheMandantTable from '@/components/static/tables/mandant/TheMandantTable.vue';
 
 export default {
     components: {
