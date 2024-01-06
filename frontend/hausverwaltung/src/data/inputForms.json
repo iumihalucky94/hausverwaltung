@@ -3,7 +3,7 @@
         {
             "inputLabel": "ID: ",
             "inputName": "object_id",
-            "inputPlaceholder": "Object ID",
+            "inputPlaceholder": "Object ID 123",
             "isRequired": true
         },
         {
@@ -29,24 +29,6 @@
             "inputName": "plz",
             "inputPlaceholder": "Object PLZ",
             "isRequired": true
-        },
-        {
-            "inputLabel": "City: ",
-            "inputName": "city",
-            "inputPlaceholder": "City of Object",
-            "isRequired": true
-        },
-        {
-            "inputLabel": "Country: ",
-            "inputName": "country",
-            "inputPlaceholder": "Country of Object",
-            "isRequired": true
-        },
-        {
-            "inputLabel": "App. Nr: ",
-            "inputName": "appartment_nr",
-            "inputPlaceholder": "Apartment Nr.",
-            "isRequired": false
         },
         {
             "inputLabel": "Notes: ",

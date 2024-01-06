@@ -47,17 +47,31 @@ export default {
                     jsonData[key] = value;
                 }
             }
+
         },
         storeData() {
             const propertyName = 'create_object';
             updateMissingKeys(this.inputJSON, this.inputFormsList, propertyName);
             const jsonChecker = checkRequiredFields(this.inputJSON, this.inputFormsList, propertyName);
-
+            console.log(this.inputJSON)
             if (jsonChecker === true) {
                 console.log('clicked')
-                console.log(this.inputJSON)
+                let creatObjectJSON = JSON.stringify(this.inputJSON)
+                this.$axios.post('/object/create', creatObjectJSON, {
+                    headers: {
+                        // Overwrite Axios's automatically set Content-Type
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => {
+                    console.log(response.data);
+                }).catch(error => {
+                    console.error(error);
+                });
             }
         }
+    },
+    mounted() {
+
     }
 };
 </script>

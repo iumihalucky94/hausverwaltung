@@ -21,15 +21,26 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // Import list of icons
 import { faCaretDown, faCaretUp, faUserSecret, faArrowRightFromBracket, faHouse, faListCheck, faTrash, faXmark, faTriangleExclamation, faCircleExclamation, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
+import axiosInstance from './utils/axios'
+
+
 // Adding icon to usage library
 library.add(faCaretDown, faCaretUp, faUserSecret, faArrowRightFromBracket, faHouse, faListCheck, faTrash, faXmark, faTriangleExclamation, faCircleExclamation, faQuestionCircle)
 
+// const apiURL = 'http://hausverwaltung.immg.tech/api/'
+
 const app = createApp(App)
+
+// BACK end URL for entire app
+// app.config.globalProperties.$apiURL = apiURL;
+// How to use: this.$apiURL
+app.config.globalProperties.$axios = axiosInstance;
 
 app.component('fai', FontAwesomeIcon)
 app.component('TheDeleteModal', TheDeleteModal);
 app.component('TheEditModal', TheEditModal);
 app.component('VueDatePicker', VueDatePicker);
 
+// app.use(axios)
 app.use(router)
 app.mount('#app')
