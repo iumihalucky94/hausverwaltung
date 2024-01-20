@@ -63,11 +63,11 @@ export default {
 
         // console.log(obj)
         for (let key in groupAndTasksList) {
-            console.log(this.visible[key])
+            // console.log(this.visible[key])
             this.visible[key] = true
         }
-        console.log(this.tableHeaderData)
-        console.log(this.visible)
+        // console.log(this.tableHeaderData)
+        // console.log(this.visible)
     }
 }
 </script>

@@ -89,7 +89,7 @@ export default {
     },
     methods: {
         format(date) {
-            console.log(date)
+            // console.log(date)
             let day = date.getDate();
             let month = date.getMonth();
             let year = date.getFullYear();

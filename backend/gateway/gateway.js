@@ -1,21 +1,11 @@
 const express = require('express');
-const { createProxyMiddleware } = require('http-proxy-middleware');
-
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000; // Вы можете выбрать любой порт
 
 app.use(express.json());
-const apiRouter = express.Router();
 
-app.use('/api/object/create', createProxyMiddleware({
-    target: 'http://127.0.0.1:3001',
-    pathRewrite: {
-        '^/api/object/create': '/',
-        '^/object/create': '/',
-    }
-}));
+// Здесь будут роуты для перенаправления запросов
 
-app.listen(port, (err) => {
-    if (err) return console.log('Error starting server:', err);
-    console.log('Server running on port:', port);
+app.listen(port, () => {
+    console.log(`Gateway listening at http://localhost:${port}`);
 });

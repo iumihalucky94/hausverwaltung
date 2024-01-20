@@ -27,7 +27,8 @@ export default defineConfig({
         // port: 5173,
         proxy: {
             "/api": {
-                target: "http://hausverwaltung.immg.tech/",
+                // target: "http://hausverwaltung.immg.tech/",
+                target: "http://localhost/",
                 changeOrigin: true,
                 secure: false,
             },
