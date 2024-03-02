@@ -1,0 +1,33 @@
+{
+  "name": "hausverwaltung",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "^3.0.5",
+    "@vuepic/vue-datepicker": "^7.3.0",
+    "axios": "^1.6.7",
+    "dotenv": "^16.3.1",
+    "npm": "^10.2.2",
+    "vue": "^3.3.4",
+    "vue-pro-calendar": "^1.1.9",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "sass": "^1.69.5",
+    "tailwindcss": "^3.3.5",
+    "vite": "^4.4.5"
+  }
+}
