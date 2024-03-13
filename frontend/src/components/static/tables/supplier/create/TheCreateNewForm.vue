@@ -27,16 +27,25 @@ export default {
                 // Check if the key already exists in the JSON object
                 if (jsonData.hasOwnProperty(key)) {
                     // If the key exists, update its value
-                    jsonData[key] = value;
+                    jsonData[key] = value.trim();
                 } else {
                     // If the key doesn't exist, add it to the JSON object
-                    jsonData[key] = value;
+                    jsonData[key] = value.trim();
                 }
             }
             console.log(jsonData)
         },
-        storeData() {
-            console.log(2)
+        async storeData() {
+            try {
+                if (this.inputJSON['supplier_name'] != '' && this.inputJSON['supplier_email'] != '') {
+                    const response = await this.$axios.post('http://localhost:3000/supplier/create_new', this.inputJSON);
+                    console.log(response.data);
+                } else {
+                    console.log('login is empty')
+                }
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 }

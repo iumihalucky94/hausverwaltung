@@ -30,6 +30,7 @@ export default defineConfig({
                 // target: "http://hausverwaltung.immg.tech/",
                 target: "http://localhost:3000/",
                 changeOrigin: true,
+                pathRewrite: { '^/api/': '' },
                 secure: false,
             },
         },
