@@ -10,6 +10,8 @@ const pool = mariadb.createPool({
     connectionLimit: 5
 });
 
+// <===================== SUPPLIERS =====================>
+
 async function insertIntoSuppliers(data) {
     let conn;
     try {
@@ -47,7 +49,55 @@ async function getAllSuppliers() {
     let conn;
     try {
         conn = await pool.getConnection();
-        const rows = await conn.query("SELECT * FROM suppliers");
+        let rows = await conn.query("SELECT * FROM suppliers");
+        return rows;
+    } catch (err) {
+        console.error(err);
+        return [];
+    } finally {
+        if (conn) conn.end();
+    }
+}
+// <===================== SUPPLIERS END =====================>
+
+// <===================== OBJECTS =====================>
+
+async function insertObject(data) {
+    let conn;
+    try {
+        let { object_id, street, house_nr, plz, notes } = data;
+        conn = await pool.getConnection();
+
+        // Check if object_id already exists
+        let checkSql = 'SELECT COUNT(*) AS count FROM objects WHERE object_id = ?';
+        let [checkResult] = await conn.query(checkSql, [object_id.trim()]);
+        console.log(parseInt(checkResult['count']) > 0)
+
+        if (parseInt(checkResult['count']) > 0) {
+            // Object_id already exists
+            return { success: false, message: `A record with ID:${object_id} already exists.` };
+        } else {
+            // Proceed with insertion since object_id does not exist
+            let insertSql = `INSERT INTO objects (object_id, street, house_nr, plz, notes) VALUES (?, ?, ?, ?, ?)`;
+            let values = [object_id, street, house_nr, plz, notes];
+            await conn.query(insertSql, values);
+            return { success: true, message: 'Record inserted successfully.' };
+        }
+    } catch (err) {
+        console.error('Error executing insertObject:', err);
+        return { success: false, message: 'An error occurred during the operation.' };
+    } finally {
+        if (conn) conn.release(); // Ensure the connection is released back to the pool
+    }
+}
+
+async function updateObject(data) {
+    console.log(data)
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        let rows = await conn.query(`UPDATE objects SET object_id='${data.object_id}', street='${data.street}', house_nr='${data.house_nr}', plz='${data.plz}', notes='${data.notes}' WHERE id=${data.id}`);
+        console.log(rows.affectedRows)
         return rows;
     } catch (err) {
         console.error(err);
@@ -57,8 +107,52 @@ async function getAllSuppliers() {
     }
 }
 
+async function getAllObjects() {
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        let rows = await conn.query("SELECT object_id, street, house_nr, plz, notes FROM objects");
+        return rows;
+    } catch (err) {
+        console.error(err);
+        return [];
+    } finally {
+        if (conn) conn.end();
+    }
+}
+
+async function getObjectByID(objectID) {
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        let rows = await conn.query(`SELECT * FROM objects WHERE object_id='${objectID}'`);
+        return rows[0];
+    } catch (err) {
+        console.error(err);
+        return [];
+    } finally {
+        if (conn) conn.end();
+    }
+}
+
+async function deleteObecject(objectID) {
+    let conn;
+    // DELETE FROM objects WHERE object_id='qqqq qq'
+    try {
+        conn = await pool.getConnection();
+        let rows = await conn.query(`DELETE FROM objects WHERE object_id='${objectID}'`);
+        return rows.affectedRows;
+    } catch (err) {
+        console.error(err);
+        return [];
+    } finally {
+        if (conn) conn.end();
+    }
+}
+
+// <===================== OBJECTS END =====================>
 
 
 
 
-module.exports = { insertIntoSuppliers, checkEmailExists, getAllSuppliers };
+module.exports = { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject };

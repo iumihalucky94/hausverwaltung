@@ -6,7 +6,7 @@
                 <div v-for="(field, index) in inputFormsList.create_object" :key="index" class=" mb-4 px-2 ">
                     <TheInputField class="text-secondary w-full" :inputLabel="field.inputLabel" :inputName="field.inputName"
                         :inputPlaceholder="field.inputPlaceholder" :disable_validated="true"
-                        :passedInputValue="dataList[0][field.inputName]" />
+                        :passedInputValue="dataList[field.inputName]" />
                 </div>
             </div>
         </div>
@@ -33,6 +33,7 @@ export default {
             inputFormsList: inputForms,
             dataList: inputFormsData,
             objectIdURL: '',
+            objects: [],
             loading: true,
         }
     },
@@ -41,19 +42,41 @@ export default {
             console.log(inputFormsData.object_list)
             return inputFormsData.object_list.body.filter(object => object.object_id === id);
         },
-    },
-    async created() {
+        async fetchData() {
+            this.objectIdURL = this.$router.currentRoute._rawValue.params.object_id
+            await this.$axios.get(`http://localhost:3000/objects/get_data/${this.objectIdURL}`,)
+                // .then(response => response.json())
+                .then(
+                    (res) => {
+                        console.log(res.data.message)
+                        this.dataList = res.data.message
+                        this.loading = false;
+                        this.$emit('currentData', this.dataList);
+                    }
+                )
 
-        this.objectIdURL = this.$router.currentRoute._rawValue.params.object_id;
-        this.dataList = this.getDesiredObjectFromJSONByID(this.objectIdURL);
-        try {
-            this.dataList = await this.getDesiredObjectFromJSONByID(this.objectIdURL);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        } finally {
-            this.loading = false;
-            this.$emit('currentData', this.dataList[0]);
+                // .then(data => {
+                //     this.objects = data.jsonData; // Assuming the backend sends data in a property named 'jsonData'
+
+                // })
+                .catch(error => console.error('There was an error fetching the objects:', error));
         }
-    }
+    },
+    mounted() {
+        // Fetch data when component mounts
+        this.fetchData();
+    },
+    // async created() {
+    //     this.objectIdURL = this.$router.currentRoute._rawValue.params.object_id;
+    //     this.dataList = this.getDesiredObjectFromJSONByID(this.objectIdURL);
+    //     try {
+    //         this.dataList = await this.getDesiredObjectFromJSONByID(this.objectIdURL);
+    //     } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //     } finally {
+    //         this.loading = false;
+    //         this.$emit('currentData', this.dataList[0]);
+    //     }
+    // }
 }
 </script>

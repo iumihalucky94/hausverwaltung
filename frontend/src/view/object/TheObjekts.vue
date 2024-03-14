@@ -7,15 +7,13 @@
                 <TheSaveConfirmButton btnText="Create new" routeName="Create_object" />
             </div>
         </div>
-        <TheDataTable :tableData="data" class="mh-90" />
+        <TheDataTable class="mh-90 mb-10" />
     </section>
 </template>
 
 <script>
 import TheDataTable from '@/components/static/tables/object-table/TheDataTable.vue';
 import TheSaveConfirmButton from '@/components/buttons/TheSaveConfirmButton.vue';
-
-import data from '@/data/tableData.json'
 
 export default {
     components: {
@@ -24,12 +22,9 @@ export default {
     },
     data() {
         return {
-            data: data.object_list
         }
     },
-    methods: {
 
-    }
 }
 </script>
 

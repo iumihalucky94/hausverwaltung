@@ -30,13 +30,11 @@
     "object_list": {
         "header": [
             {
-                "id": "Id",
                 "object_id": "Object Id",
                 "street": "Street",
                 "house_nr": "House Nr.",
                 "plz": "PLZ",
                 "notes": "Notes",
-                "manager": "Manager",
                 "update": "Edit"
             }
         ],

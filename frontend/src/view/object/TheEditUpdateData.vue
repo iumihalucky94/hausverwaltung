@@ -3,10 +3,13 @@
 
         <div class="w-full">
             <TheSectionHeader headerText="Updated data" class="text-center mb-10" />
-            <div v-for="(field, index) in inputFormsList.create_object" :key="index" class="mb-4 px-2">
+            <div v-for="(field, index) in  inputFormsList.create_object " :key="index" class="mb-4 px-2">
                 <TheInputField class="text-secondary w-full" :inputLabel="field.inputLabel" :inputName="field.inputName"
                     :inputPlaceholder="field.inputPlaceholder" @input="getDataFromChild" />
+
+
             </div>
+
         </div>
     </section>
 </template>

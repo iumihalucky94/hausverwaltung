@@ -3,7 +3,7 @@
         {
             "inputLabel": "ID: ",
             "inputName": "object_id",
-            "inputPlaceholder": "Object ID 123",
+            "inputPlaceholder": "Object ID",
             "isRequired": true
         },
         {
@@ -19,12 +19,6 @@
             "isRequired": true
         },
         {
-            "inputLabel": "Stiege: ",
-            "inputName": "stiege",
-            "inputPlaceholder": "House Stiege",
-            "isRequired": true
-        },
-        {
             "inputLabel": "PLZ: ",
             "inputName": "plz",
             "inputPlaceholder": "Object PLZ",
@@ -35,12 +29,6 @@
             "inputName": "notes",
             "inputPlaceholder": "Related notes",
             "isRequired": false
-        },
-        {
-            "inputLabel": "Manager: ",
-            "inputName": "manager",
-            "inputPlaceholder": "Manager of the Object",
-            "isRequired": true
         }
     ],
     "edit_object": [
@@ -60,39 +48,14 @@
             "inputPlaceholder": "New House Number"
         },
         {
-            "inputLabel": "Stiege: ",
-            "inputName": "edit_stiege",
-            "inputPlaceholder": "New House Stiege"
-        },
-        {
             "inputLabel": "PLZ: ",
             "inputName": "edit_plz",
             "inputPlaceholder": "New Object PLZ"
         },
         {
-            "inputLabel": "City: ",
-            "inputName": "edit_city",
-            "inputPlaceholder": "New City of Object"
-        },
-        {
-            "inputLabel": "Country: ",
-            "inputName": "edit_country",
-            "inputPlaceholder": "New Country of Object"
-        },
-        {
-            "inputLabel": "App. Nr: ",
-            "inputName": "edit_appartment_nr",
-            "inputPlaceholder": "New Apartment Nr."
-        },
-        {
             "inputLabel": "Notes: ",
             "inputName": "edit_notes",
             "inputPlaceholder": "New Related notes"
-        },
-        {
-            "inputLabel": "Manager: ",
-            "inputName": "edit_manager",
-            "inputPlaceholder": "New Manager of the Object"
         }
     ],
     "supplier": [

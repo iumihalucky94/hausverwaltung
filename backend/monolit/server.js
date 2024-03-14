@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Custom imports 
-const { insertIntoSuppliers, checkEmailExists, getAllSuppliers } = require('./db');
+const { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject } = require('./db');
 
 // Middleware
 app.use(bodyParser.json());
@@ -20,8 +20,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-
-
+// <=============== SUPPLIER ===============>
 // Route to handle POST requests
 app.post('/supplier/create_new', async (req, res) => {
     try {
@@ -59,6 +58,77 @@ app.get('/supplier/get_list', async (req, res) => {
         res.status(500).send('Server error');
     }
 });
+
+// <=============== SUPPLIER END ===============>
+
+// <=============== OBJECTS ===============>
+app.post('/objects/create', async (req, res) => {
+    try {
+        let createObjectJSON = req.body
+        let result = await insertObject(createObjectJSON);
+        res.status(201).send({ success: result.success, message: result.message });
+    } catch (e) {
+        console.log(e)
+        res.status(400).send({ error: e.message });
+    }
+})
+
+app.put('/objects/update', async (req, res) => {
+    try {
+        let updateDataJSON = req.body
+        console.log(updateDataJSON)
+        let result = await updateObject(updateDataJSON)
+        console.log(result)
+        if (result.affectedRows === 1) {
+            res.status(200).send({ success: true, message: 'Record has been updated successfully' })
+        } else {
+            res.status(400).send({ success: false, message: 'Something went wrong!' })
+        }
+    } catch (error) {
+        res.status(400).send({ success: false, message: error })
+    }
+})
+
+app.get('/objects/get_data/:objectId', async (req, res) => {
+    try {
+        const objectId = req.params.objectId;
+        let objectRes = await getObjectByID(objectId)
+        console.log(Object.keys(objectRes).length)
+        if (Object.keys(objectRes).length > 0) {
+            res.status(200).send({ success: true, message: objectRes })
+        } else {
+            res.status(400).send({ success: false, message: objectRes })
+        }
+    } catch (error) {
+        res.status(400).send({ error: error.message })
+    }
+})
+
+app.post('/objects/delete/', async (req, res) => {
+    try {
+        if (req.body.toBeDeleted) {
+            let objectRes = await deleteObecject(req.body.object_id)
+            console.log(objectRes)
+            res.status(200).send({ success: true, message: `${objectRes} Row(s) has been deleted.` })
+        } else {
+            res.status(400).send({ success: false, error: `${objectRes} || Something went wrong.` })
+        }
+
+    } catch (error) {
+        res.status(400).send({ success: false, error: error.message })
+    }
+})
+
+app.get('/objects/list', async (req, res) => {
+    try {
+        let jsonData = await getAllObjects();
+        res.status(200).send({ success: true, jsonData: jsonData })
+    } catch (error) {
+        res.status(400).send({ success: false, error: error.message })
+    }
+})
+
+
 
 // Start the server
 app.listen(PORT, () => {

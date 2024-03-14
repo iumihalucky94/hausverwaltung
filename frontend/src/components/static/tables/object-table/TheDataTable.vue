@@ -1,5 +1,5 @@
 <template>
-    <table :tableData="tableData" class="w-90w text-left text-sm font-light">
+    <table class="w-90w text-left text-sm font-light">
         <TheDataTableHeader :tableHeader="tableHeader" />
         <TheDataTableRow :tableBody="tableBody" />
     </table>
@@ -8,40 +8,37 @@
 <script >
 import TheDataTableHeader from './TheDataTableHeader.vue'
 import TheDataTableRow from './TheDataTableRow.vue'
+import tableData from '@/data/tableData.json'
 
 export default {
     components: {
         TheDataTableHeader,
         TheDataTableRow
     },
-    props: {
-        tableData: Object,
-        require: true
-    },
     data() {
         return {
-            tableHeader: Object,
-            tableBody: Object
+            tableHeader: {},
+            tableBody: {}
         }
-    }, watch: {
-        tableData: {
-            handler(newTableData) {
-                this.splitTableData(newTableData);
-            },
-            immediate: true
-        }
+    },
+    created() {
+        this.fetchData();
+        this.tableHeader = tableData.object_list.header[0]
     },
     methods: {
-        splitTableData(tableData) {
-            if (tableData) {
-                this.tableHeader = tableData.header;
-                this.tableBody = tableData.body;
+        async fetchData() {
+            try {
+                const response = await this.$axios.get('http://localhost:3000/objects/list'); // Adjust this URL to your endpoint
+                console.log(response.data.jsonData)
+                let resData = response.data.jsonData
+                this.tableBody = resData;
+            } catch (error) {
+                console.error("There was an error fetching the data:", error);
             }
         }
-    },
-    mounted() {
-        this.splitTableData(this.tableData);
     }
+
+
 
 }
 </script>

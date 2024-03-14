@@ -52,14 +52,21 @@ export default {
     },
     methods: {
         getDataFromChild(data) {
-            this.updatedJSON = { ...data };
+            const filteredData = Object.entries(data).reduce((acc, [key, value]) => {
+                // Check for empty string, but you might add additional checks here
+                if (value !== '' && value !== null && value !== undefined) {
+                    acc[key] = value;
+                }
+                return acc;
+            }, {});
+            this.updatedJSON = { ...filteredData };
+            console.log(filteredData)
         },
         getCurrentDataJSON(data) {
             this.currentJSON = data;
         },
-        storeData() {
+        async storeData() {
             let updatedData = updateValuesFromB(this.currentJSON, this.updatedJSON);
-            console.log(updatedData)
             if (updatedData === 1) {
                 console.error('No changes required, they are equal')
                 return
@@ -68,6 +75,16 @@ export default {
                 return
             } else {
                 console.log('Data will be save: ', updatedData)
+                await this.$axios.put('http://localhost:3000/objects/update', updatedData, {
+                    headers: {
+                        // Overwrite Axios's automatically set Content-Type
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res => {
+                    console.log(res);
+                }).catch(error => {
+                    console.error(error);
+                });
             }
         }
     }

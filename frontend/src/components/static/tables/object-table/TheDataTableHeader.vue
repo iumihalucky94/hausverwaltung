@@ -18,7 +18,7 @@ export default {
     },
     computed: {
         tableHeaderValue() {
-            return Object.values(this.tableHeader[0]);
+            return Object.values(this.tableHeader);
         }
     }
 }

@@ -33,7 +33,7 @@
 export default {
     props: {
         tableBody: {
-            type: Array,
+            type: Object,
             default: () => [],
         },
     },
@@ -48,27 +48,62 @@ export default {
                 hintText: "This action will destroy all relationships",
                 cancelText: "Cancel",
                 confirmText: "Confirm"
-            }
+            },
+            delete_id: ''
         }
     },
     methods: {
         deleteItem(row) {
             console.log(row.object_id)
+            this.delete_id = row.object_id
             this.showDeleteModalWindow = true
         },
         closeModal() {
             this.showDeleteModalWindow = false
+            this.delete_id = ''
             console.log()
         },
-        confirmModal(data) {
+        async confirmModal(data) {
             // Modal Window confirmation hang in "data"var
-            console.log(data)
+            if (data[0]) {
+                console.log(this.delete_id)
+                let deleteData = {
+                    toBeDeleted: true,
+                    object_id: this.delete_id
+                };
+                try {
+                    await this.$axios.post('http://localhost:3000/objects/delete/', deleteData, {
+                        headers: {
+                            // Overwrite Axios's automatically set Content-Type
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(
+                            (res) => {
+                                if (res.data.success) {
+                                    console.log(res.data.message)
+                                    // Removing record from local array
+                                    let desiredObjectIndex = Object.values(this.tableBody).findIndex(obj => obj.object_id === this.delete_id);
+                                    if (desiredObjectIndex !== -1) {
+                                        this.tableBody.splice(desiredObjectIndex, 1);
+                                    }
+                                }
+                            }
+                        )
+                        .catch(
+                            (e) => {
+                                console.log(e)
+                            }
+                        )
+                } catch (error) {
+                    console.log(e)
+                }
+            }
             this.showDeleteModalWindow = false
-
+            this.delete_id = ''
         }
-
-
     },
+
 };
 </script>
 
