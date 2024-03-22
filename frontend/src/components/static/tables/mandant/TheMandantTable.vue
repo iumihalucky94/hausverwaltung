@@ -1,75 +1,58 @@
 <template>
     <section class="w-full h-full flex justify-center items-center">
-        <div class="w-11/12 h-full mt-6 text-secondary text">
-            <div v-for="(group, index, i) in groups_tasks" :key="index" class="w-full mb-6">
+        <div class="w-full h-full mt-6 text-secondary text pl-2 pr-2">
+            <div v-for="(tasks, groupName, index) in groupsAndTasks" :key="groupName" class="w-full mb-6">
                 <div class="flex w-full justify-between items-center h-12 p-8 bg-primary border-2 rounded-xl">
-                    <p class="text-2xl font-bold">{{ Object.keys(groups_tasks)[i] }}</p>
+                    <p class="text-2xl font-bold">{{ groupName }}</p>
                     <fai @click="toggleVisibility(index)"
                         :icon="visible[index] ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'" />
                 </div>
-                <!-- <div v-if="visible[index]" v-for="item in group" :key="item" class="w-11/12 mx-12 text-xl"> -->
-                <div v-if="visible[index]" class="w-95% ml-8">
-                    <table class=" w-full h-full border-2 border-slate-300">
+                <div v-if="visible[index]" class="w-full pl-2 pr-2">
+                    <table class="w-full h-full border-2 border-slate-300">
                         <TheMandantTableHeader :header_data="tableHeaderData" />
-                        <TheMandantTableRow :group_tasks="group" />
+                        <TheMandantTableRow :group_tasks="tasks" :group_name="groupName" />
                     </table>
                 </div>
             </div>
         </div>
     </section>
 </template>
-
-
 <script>
-
+import { reactive, toRefs } from 'vue'; // Import reactive and toRefs
 import TheMandantTableHeader from '@/components/static/tables/mandant/TheMandantTableHeader.vue';
 import TheMandantTableRow from '@/components/static/tables/mandant/TheMandantTableRow.vue';
-import mandantTableInfo from '@/data/mandantTableInfo.json'
-import groupAndTasksList from '@/data/objektgroup.json'
-import mandantPlaneData from '@/data/mandantPlaneData.json'
-
+import mandantTableInfo from '@/data/mandantTableInfo.json';
 
 export default {
     components: {
-        TheMandantTableRow,
         TheMandantTableHeader,
+        TheMandantTableRow,
     },
     data() {
         return {
-            objectIdURL: '',
             tableHeaderData: mandantTableInfo.header,
-            groups_tasks: groupAndTasksList,
-            tableData: {},
-            visible: {}
-        }
-    },
-    watch: {
-        groupAndTasksList() {
-
+            groupsAndTasks: {},
+            visible: reactive({}), // Initialize visible as a reactive object
         }
     },
     methods: {
-        toggleVisibility(index) {
-            this.visible[index] = this.visible[index] ? false : true
-            console.log(groupAndTasksList)
+        async fetchGroupsAndTasks() {
+            await this.$axios.get('http://localhost:3000/tg/list')
+                .then(response => {
+                    this.groupsAndTasks = response.data.message;
+                    // Initialize visibility state for each group
+                    Object.keys(this.groupsAndTasks).forEach(key => {
+                        this.visible[key] = false; // Use the group name as a key
+                    });
+                })
+                .catch(error => console.error('Error fetching tasks:', error));
+        },
+        toggleVisibility(groupName) {
+            this.visible[groupName] = !this.visible[groupName];
         },
     },
-    watch: {
-
-    },
-    async created() {
-        this.objectIdURL = await this.$router.currentRoute._rawValue.params;
-        this.tableData = mandantPlaneData[this.objectIdURL];
-
-        // console.log(obj)
-        for (let key in groupAndTasksList) {
-            // console.log(this.visible[key])
-            this.visible[key] = true
-        }
-        // console.log(this.tableHeaderData)
-        // console.log(this.visible)
+    async mounted() {
+        this.fetchGroupsAndTasks();
     }
 }
 </script>
-
-<style lang="scss" scoped></style>

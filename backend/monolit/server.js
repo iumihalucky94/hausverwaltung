@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Custom imports 
-const { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject } = require('./db');
+const { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, createMandant, list_tasks_groups } = require('./db');
 
 // Middleware
 app.use(bodyParser.json());
@@ -122,7 +122,79 @@ app.post('/objects/delete/', async (req, res) => {
 app.get('/objects/list', async (req, res) => {
     try {
         let jsonData = await getAllObjects();
+        console.log(jsonData)
         res.status(200).send({ success: true, jsonData: jsonData })
+    } catch (error) {
+        res.status(400).send({ success: false, error: error.message })
+    }
+})
+
+// <=============== OBJECTS ===============>
+
+// <=============== TASKS & GROUPS ===============>
+
+app.post('/tg/create_gt', async (req, res) => {
+    try {
+        let tgJSON = req.body
+        if (tgJSON.gt === 'Groups') {
+            let response = await createGroupTask(tgJSON)
+            if (response.success) {
+                let affectedRowsNum = parseInt(response.message.affectedRows)
+                res.status(200).send({ success: true, message: `${affectedRowsNum} New group created` })
+            } else {
+                res.status(422).send({ success: response.success, message: response.message })
+            }
+        } else if (tgJSON.gt === 'Tasks') {
+            let response = await createGroupTask(tgJSON)
+            if (response.success) {
+                let affectedRowsNum = parseInt(response.message.affectedRows)
+                res.status(200).send({ success: true, message: `${affectedRowsNum} New Task created` })
+            } else {
+                res.status(422).send({ success: response.success, message: response.message })
+            }
+        } else {
+            res.status(400).send({ success: false, error: 'Group or Task parameter is wrong' })
+        }
+    } catch (error) {
+        res.status(400).send({ success: false, error: error.message })
+    }
+})
+
+app.get('/tg/list_groups', async (req, res) => {
+    try {
+        let response = await listGroups();
+        console.log(response)
+        if (response.success) {
+            res.status(200).send({ success: true, message: response.message })
+        } else {
+            console.log(response)
+            res.status(422).send({ success: response.success, message: response.message })
+        }
+    } catch (error) {
+        res.status(400).send({ success: false, error: error.message })
+    }
+})
+
+app.get('/tg/list', async (req, res) => {
+    try {
+        let response = await list_tasks_groups()
+        console.log(response)
+        res.status(200).send({ success: true, message: response.message })
+    } catch (error) {
+        res.status(400).send({ success: false, error: error.message })
+    }
+})
+
+// <=============== TASKS & GROUPS END ===============>
+
+// <=============== MANDANT ===============>
+
+app.post('/mandant/create', async (req, res) => {
+    try {
+        console.log(req.body)
+        let response = await createMandant(req.body)
+        res.status(200).send({ success: response.success, message: response.message })
+        // res.status(200).send({ success: true, message: response.message })
     } catch (error) {
         res.status(400).send({ success: false, error: error.message })
     }

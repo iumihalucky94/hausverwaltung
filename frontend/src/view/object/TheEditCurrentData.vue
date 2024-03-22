@@ -54,11 +54,6 @@ export default {
                         this.$emit('currentData', this.dataList);
                     }
                 )
-
-                // .then(data => {
-                //     this.objects = data.jsonData; // Assuming the backend sends data in a property named 'jsonData'
-
-                // })
                 .catch(error => console.error('There was an error fetching the objects:', error));
         }
     },
@@ -66,17 +61,5 @@ export default {
         // Fetch data when component mounts
         this.fetchData();
     },
-    // async created() {
-    //     this.objectIdURL = this.$router.currentRoute._rawValue.params.object_id;
-    //     this.dataList = this.getDesiredObjectFromJSONByID(this.objectIdURL);
-    //     try {
-    //         this.dataList = await this.getDesiredObjectFromJSONByID(this.objectIdURL);
-    //     } catch (error) {
-    //         console.error('Error fetching data:', error);
-    //     } finally {
-    //         this.loading = false;
-    //         this.$emit('currentData', this.dataList[0]);
-    //     }
-    // }
 }
 </script>

@@ -31,77 +31,133 @@
         {
             "name": "Related with weather",
             "belongs": "manager"
+        },
+        {
+            "name": "Actions",
+            "belongs": "activity"
         }
-    ],
-    "body": [
-        {
-            "inputName": "task_object",
-            "inputType": "text",
-            "inputPlaceholder": ""
-        },
-        {
-            "inputName": "supplier_name",
-            "inputType": "select_supplier",
-            "inputPlaceholder": "Select Supplier"
-        },
-        {
-            "inputName": "send_date",
-            "inputType": "date",
-            "inputPlaceholder": "Select Date"
-        },
-        {
-            "inputName": "send_reminder_date",
-            "inputType": "date",
-            "inputPlaceholder": "Select date for reminder"
-        },
-        {
-            "inputName": "deadline",
-            "inputType": "date",
-            "inputPlaceholder": "Select date, when request should be done"
-        },
-        {
-            "inputName": "frequency",
-            "inputType": "text",
-            "inputPlaceholder": "How often this task should happened"
-        },
-        {
-            "inputName": "weather_relation",
-            "inputType": "select_weather",
-            "inputPlaceholder": ""
-        }
-    ],
-    "select_supplier": [
-        "Marco GmbH",
-        "OTFM GmbH",
-        "QuantumSolutions GmbH",
-        "BlueWave Technologies GmbH",
-        "SilverPeak Innovations GmbH",
-        "Evergreen Ventures GmbH",
-        "Apex Dynamics GmbH",
-        "TerraNova Solutions GmbH",
-        "Phoenix Innovations GmbH",
-        "Zenith Enterprises GmbH",
-        "Cascade Systems GmbH",
-        "Stellar Insights GmbH",
-        "Elysium Holdings GmbH",
-        "Nimbus Creations GmbH",
-        "Equinox Dynamics GmbH",
-        "Fusion Catalyst GmbH",
-        "Horizon Ventures GmbH",
-        "Radiant Nexus GmbH",
-        "Vertex Innovations GmbH",
-        "Nebula Strategies GmbH",
-        "Empyrean Solutions GmbH",
-        "Celestial Holdings GmbH"
     ],
     "select_weather": [
-        "Snow",
-        "Rain",
-        "Sun",
-        "Cloud",
-        "Under 5 deg.C",
-        "Under 0 deg.C",
-        "Over 20 deg.C",
-        "Over 30 deg.C"
+        {
+            "name": " ",
+            "value": "none"
+        },
+        {
+            "name": "Snow",
+            "value": "snow"
+        },
+        {
+            "name": "Rain",
+            "value": "rain"
+        },
+        {
+            "name": "Sun",
+            "value": "sun"
+        },
+        {
+            "name": "cloud",
+            "value": "cloud"
+        }
+    ],
+    "select_reminder": [
+        {
+            "name": " ",
+            "value": "none"
+        },
+        {
+            "name": "In 1 day",
+            "value": "1d"
+        },
+        {
+            "name": "In 2 days",
+            "value": "2d"
+        },
+        {
+            "name": "In 3 days",
+            "value": "3d"
+        },
+        {
+            "name": "In 5 days",
+            "value": "5d"
+        },
+        {
+            "name": "In 1 week",
+            "value": "7d"
+        },
+        {
+            "name": "In 2 weeks",
+            "value": "14d"
+        },
+        {
+            "name": "In 3 weeks",
+            "value": "21d"
+        },
+        {
+            "name": "In 1 month",
+            "value": "1m"
+        },
+        {
+            "name": "In 2 months",
+            "value": "2m"
+        },
+        {
+            "name": "In 3 months",
+            "value": "3m"
+        },
+        {
+            "name": "In 4 months",
+            "value": "4m"
+        },
+        {
+            "name": "In 5 months",
+            "value": "5m"
+        }
+    ],
+    "select_frequency": [
+        {
+            "name": " ",
+            "value": "none"
+        },
+        {
+            "name": "Weekly",
+            "value": "7d"
+        },
+        {
+            "name": "Every second week",
+            "value": "14d"
+        },
+        {
+            "name": "Every 3 weeks",
+            "value": "21d"
+        },
+        {
+            "name": "Monthly",
+            "value": "1m"
+        },
+        {
+            "name": "Every 2nd month",
+            "value": "2m"
+        },
+        {
+            "name": "Every 3 months",
+            "value": "3m"
+        },
+        {
+            "name": "Every year",
+            "value": "1y"
+        },
+        {
+            "name": "Every 2 years",
+            "value": "2y"
+        }
+    ],
+    "select_email_template": [
+        "none",
+        "Default",
+        "Supplier #1",
+        "Reminder",
+        "Special",
+        "Test",
+        "Yearly"
     ]
 }

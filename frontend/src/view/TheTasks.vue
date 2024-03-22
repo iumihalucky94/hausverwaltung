@@ -2,7 +2,8 @@
     <section class="w-full h-full flex px-24 my-10">
         <div class="w-full h-full flex justify-center items-center flex-col bg-gray-100/50 rounded-3xl mx-2">
             <p class="text-2xl underline text-thirdly my-4">List of Groups and Tasks</p>
-            <TheGT :groupsAndTasks="data" />
+            <!-- <TheGT :groupsAndTasks="data" /> -->
+            <TheGT />
         </div>
         <div class="w-full h-full flex justify-center items-center flex-col bg-gray-100/50 rounded-3xl mx-2">
             <p class="text-2xl underline text-thirdly my-4">Create new task or group</p>
@@ -27,9 +28,15 @@ export default {
 
         return {
             data,
-            groupKeys,
+            groupKeys
         };
+    },
+    methods: {
+        refreshGTData() {
+            console.log('here')
+        }
     }
+
 }
 </script>
 

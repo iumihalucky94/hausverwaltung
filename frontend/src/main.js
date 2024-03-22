@@ -24,13 +24,13 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // Import list of icons
-import { faCaretDown, faCaretUp, faUserSecret, faArrowRightFromBracket, faHouse, faListCheck, faTrash, faXmark, faTriangleExclamation, faCircleExclamation, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCaretDown, faCaretUp, faUserSecret, faArrowRightFromBracket, faHouse, faListCheck, faTrash, faXmark, faTriangleExclamation, faCircleExclamation, faQuestionCircle, faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
 
 import axiosInstance from './utils/axios'
 
 
 // Adding icon to usage library
-library.add(faCaretDown, faCaretUp, faUserSecret, faArrowRightFromBracket, faHouse, faListCheck, faTrash, faXmark, faTriangleExclamation, faCircleExclamation, faQuestionCircle)
+library.add(faCaretDown, faCaretUp, faUserSecret, faArrowRightFromBracket, faHouse, faListCheck, faTrash, faXmark, faTriangleExclamation, faCircleExclamation, faQuestionCircle, faFloppyDisk)
 
 // const apiURL = 'http://hausverwaltung.immg.tech/api/'
 

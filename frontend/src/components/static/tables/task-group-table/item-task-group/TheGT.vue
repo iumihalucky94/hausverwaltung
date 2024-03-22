@@ -1,6 +1,6 @@
 <template>
     <section>
-        <ul>
+        <ul v-if="Object.keys(groupsAndTasks).length > 0" class="mb-10">
             <li v-for="(tasks, group) in groupsAndTasks" :key="group" class="font-bold text-xl text-secondary mb-2">
                 {{ group }}
                 <ul>
@@ -9,21 +9,32 @@
                 </ul>
             </li>
         </ul>
+        <h1 v-else>Something went wrong with network connection</h1>
     </section>
 </template>
 
 <script>
 export default {
-    props: {
-        groupsAndTasks: {
-            type: Object,
-            required: true
+    data() {
+        return {
+            groupsAndTasks: {},
         }
     },
-    data() {
-
-
-        return {}
+    expose: ['fetchGroupsAndTasks']
+    ,
+    methods: {
+        async fetchGroupsAndTasks() {
+            await this.$axios.get('http://localhost:3000/tg/list') // Adjust the URL as needed
+                .then(response => {
+                    this.groupsAndTasks = response.data.message
+                    console.log(this.groupsAndTasks)
+                })
+                .catch(error => console.error('Error fetching tasks:', error));
+        }
+    }
+    ,
+    async mounted() {
+        this.fetchGroupsAndTasks();
     }
 }
 </script>
