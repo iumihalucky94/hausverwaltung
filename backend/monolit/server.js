@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Custom imports 
-const { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, createMandant, list_tasks_groups } = require('./db');
+const { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, list_tasks_groups, createMandant, listMandant } = require('./db');
 
 // Middleware
 app.use(bodyParser.json());
@@ -51,8 +51,9 @@ app.post('/supplier/create_new', async (req, res) => {
 
 app.get('/supplier/get_list', async (req, res) => {
     try {
-        const suppliers = await getAllSuppliers();
-        res.json(suppliers);
+        let response = await getAllSuppliers();
+        console.log(response.message)
+        res.status(200).send({ success: response.success, message: response.message });
     } catch (error) {
         console.error(error);
         res.status(500).send('Server error');
@@ -163,7 +164,6 @@ app.post('/tg/create_gt', async (req, res) => {
 app.get('/tg/list_groups', async (req, res) => {
     try {
         let response = await listGroups();
-        console.log(response)
         if (response.success) {
             res.status(200).send({ success: true, message: response.message })
         } else {
@@ -178,7 +178,6 @@ app.get('/tg/list_groups', async (req, res) => {
 app.get('/tg/list', async (req, res) => {
     try {
         let response = await list_tasks_groups()
-        console.log(response)
         res.status(200).send({ success: true, message: response.message })
     } catch (error) {
         res.status(400).send({ success: false, error: error.message })
@@ -200,6 +199,14 @@ app.post('/mandant/create', async (req, res) => {
     }
 })
 
+app.get('/mandant/list/:object_id', async (req, res) => {
+    try {
+        let response = await listMandant(req.params)
+        res.status(200).send({ success: response.success, message: response.message })
+    } catch (error) {
+        res.status(400).send({ success: false, error: error.message })
+    }
+})
 
 
 // Start the server

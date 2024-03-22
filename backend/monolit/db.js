@@ -1,5 +1,5 @@
 const mariadb = require('mariadb');
-let { getTaskIdByName, getGroupIdByName, convertDate } = require('./utilities.js');
+let { getTaskIdByName, getGroupIdByName, convertDate, dateTimeConvertor } = require('./utilities.js');
 require('dotenv').config();
 
 const pool = mariadb.createPool({
@@ -51,10 +51,10 @@ async function getAllSuppliers() {
     try {
         conn = await pool.getConnection();
         let rows = await conn.query("SELECT * FROM suppliers");
-        return rows;
+        return { success: true, message: rows };
     } catch (err) {
         console.error(err);
-        return [];
+        return { success: false, message: err };
     } finally {
         if (conn) conn.end();
     }
@@ -275,58 +275,6 @@ async function list_tasks_groups() {
 
 // <===================== MANDANT =====================>
 
-// async function getTaskIdByName(taskName) {
-//     let conn;
-//     try {
-//         conn = await pool.getConnection();
-//         const query = "SELECT task_id FROM tasks WHERE task_name = ?";
-//         const rows = await conn.query(query, [taskName]);
-//         if (rows.length > 0) {
-//             return rows[0].task_id; // Assuming task_name is unique
-//         } else {
-//             return null; // No task found
-//         }
-//     } catch (error) {
-//         console.error(error);
-//         throw error; // Rethrow or handle as appropriate
-//     } finally {
-//         if (conn) conn.end();
-//     }
-// }
-
-// async function getGroupIdByName(groupName) {
-//     let conn;
-//     try {
-//         conn = await pool.getConnection();
-//         const query = "SELECT group_id FROM groups WHERE group_name = ?";
-//         const rows = await conn.query(query, [groupName]);
-//         if (rows.length > 0) {
-//             return rows[0].group_id; // Assuming group_name is unique
-//         } else {
-//             return null; // No group found
-//         }
-//     } catch (error) {
-//         console.error(error);
-//         throw error; // Rethrow or handle as appropriate
-//     } finally {
-//         if (conn) conn.end();
-//     }
-// }
-
-// function convertDate(dateStr) {
-//     // Check if dateStr includes time
-//     if (dateStr.includes(',')) {
-//         // Assuming dateStr is in "DD.MM.YYYY, HH:MM:SS" format
-//         const parts = dateStr.split(', ');
-//         const date = parts[0].split('.').reverse().join('-');
-//         const time = parts[1];
-//         return `${date} ${time}`;
-//     } else {
-//         // Assuming dateStr is in "DD.MM.YYYY" format for dates without time
-//         return dateStr.split('.').reverse().join('-');
-//     }
-// }
-
 async function createMandant(data) {
     // Convert send_date and deadline from "DD.MM.YYYY, HH:MM:SS" or "DD.MM.YYYY" to "YYYY-MM-DD HH:MM:SS" or "YYYY-MM-DD"
     if (data.send_date) {
@@ -339,16 +287,12 @@ async function createMandant(data) {
     // Fetching group_id and task_id using the provided names
     if (data.group_name) {
         data.group_id = await getGroupIdByName(data.group_name);
-        if (!data.group_id) {
-            return { success: false, message: 'Task name not found' };
-        }
+        if (!data.group_id) { return { success: false, message: 'Task name not found' }; }
         delete data.group_name;
     }
     if (data.task_name) {
         data.task_id = await getTaskIdByName(data.task_name);
-        if (!data.task_id) {
-            return { success: false, message: 'Task name not found' };
-        }
+        if (!data.task_id) { return { success: false, message: 'Task name not found' }; }
         delete data.task_name
     }
     // Ensure essential fields are present
@@ -399,4 +343,36 @@ async function createMandant(data) {
     }
 }
 
-module.exports = { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, listTasks, list_tasks_groups, createMandant };
+async function listMandant(data) {
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        let key = Object.keys(data)[0];
+        let value = data[key];
+        let rows = await conn.query(`SELECT * FROM mandant WHERE ${key} = ?`, [value]);
+        for (let item of rows) {
+            if (item.send_date) { item.send_date = dateTimeConvertor('datetime', item.send_date) }
+            if (item.deadline) { item.deadline = dateTimeConvertor('date', item.deadline) }
+            if (item.task_id) {
+                let taskResult = await conn.query(`SELECT task_name FROM tasks WHERE task_id = ?`, [item.task_id]);
+                console.log(taskResult)
+                if (taskResult.length > 0) {
+                    item.task_name = taskResult[0].task_name; // Correctly assign task_name to the item
+                } else {
+                    return ({ success: false, message: 'Something went wrong with DB connection in function listMandant 2' })
+                }
+                rows['task_name']
+                delete item.task_id
+            }
+        }
+        console.log(rows)
+        return ({ success: true, message: rows })
+    } catch (err) {
+        console.error(err);
+        return ({ success: false, message: 'Something went wrong with DB connection in function listMandant' })
+    } finally {
+        if (conn) conn.end();
+    }
+}
+
+module.exports = { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, listTasks, list_tasks_groups, createMandant, listMandant };

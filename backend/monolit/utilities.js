@@ -64,4 +64,36 @@ function convertDate(dateStr) {
     }
 }
 
-module.exports = { convertDate, getGroupIdByName, getTaskIdByName }
+function dateTimeConvertor(type, data) {
+    let date = new Date(data);
+    if (type == 'date') {
+        // Use Intl.DateTimeFormat to format the date in Austrian local time
+        let formatter = new Intl.DateTimeFormat('de-AT', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            timeZone: 'Europe/Vienna',
+        });
+
+        // Format the date
+        let austrianDateTime = formatter.format(date);
+        return austrianDateTime
+    } else if (type == 'datetime') {
+        // Use Intl.DateTimeFormat to format the date in Austrian local time
+        let formatter = new Intl.DateTimeFormat('de-AT', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: 'Europe/Vienna',
+        });
+
+        // Format the date
+        let austrianDateTime = formatter.format(date);
+        return austrianDateTime
+    }
+}
+
+module.exports = { convertDate, getGroupIdByName, getTaskIdByName, dateTimeConvertor }

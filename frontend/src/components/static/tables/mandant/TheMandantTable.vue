@@ -2,10 +2,10 @@
     <section class="w-full h-full flex justify-center items-center">
         <div class="w-full h-full mt-6 text-secondary text pl-2 pr-2">
             <div v-for="(tasks, groupName, index) in groupsAndTasks" :key="groupName" class="w-full mb-6">
-                <div class="flex w-full justify-between items-center h-12 p-8 bg-primary border-2 rounded-xl">
+                <div class="flex w-full justify-between items-center h-12 p-8 bg-primary border-2 rounded-xl"
+                    @click="toggleVisibility(index)">
                     <p class="text-2xl font-bold">{{ groupName }}</p>
-                    <fai @click="toggleVisibility(index)"
-                        :icon="visible[index] ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'" />
+                    <fai :icon="visible[index] ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'" />
                 </div>
                 <div v-if="visible[index]" class="w-full pl-2 pr-2">
                     <table class="w-full h-full border-2 border-slate-300">
@@ -18,7 +18,7 @@
     </section>
 </template>
 <script>
-import { reactive, toRefs } from 'vue'; // Import reactive and toRefs
+import { reactive } from 'vue'; // Import reactive and toRefs
 import TheMandantTableHeader from '@/components/static/tables/mandant/TheMandantTableHeader.vue';
 import TheMandantTableRow from '@/components/static/tables/mandant/TheMandantTableRow.vue';
 import mandantTableInfo from '@/data/mandantTableInfo.json';

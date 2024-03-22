@@ -3,7 +3,7 @@
         <tr v-for="item, index in  group_tasks " :key="index" class="border-2 border-slate-300 h-10">
             <td class="border border-slate-300 max-w-xs overflow-hidden"
                 :class="{ 'light-green-background': rowHasChanges(group_name, index) }">
-                <p class="text-thirdly flex">{{ item }}</p>
+                <p class="text-thirdly flex" :model="checkMandant(item)">{{ item }}</p>
             </td>
             <td class="border border-slate-300  overflow-hidden">
                 <select name="supplier_id" :id="item.index" @input="getInfo($event, 'supplier_id', index, group_name)">
@@ -59,7 +59,6 @@
                 </button>
             </td>
         </tr>
-
     </tbody>
 </template>
 
@@ -89,6 +88,8 @@ export default {
             mailTemplate: mandantTableInfo.select_email_template,
             selectedSupplier: '',
             changesList: {},
+            existedMandantList: {},
+            listedIndexOfIexistedMandant: false,
             valueChanged: 'red'
         }
     },
@@ -140,7 +141,6 @@ export default {
                 dataJSON['group_name'] = groupName
                 dataJSON['task_name'] = taskName
                 dataJSON['object_id'] = this.$router.currentRoute._rawValue.params.object_id
-                console.log(dataJSON)
 
                 await this.$axios.post('http://localhost:3000/mandant/create', dataJSON, {
                     headers: {
@@ -163,51 +163,60 @@ export default {
                 }).catch(error => {
                     console.error(error);
                 });
-
-
-                // await this.$axios.post('http://localhost:3000/mandant/create', dataJSON, {
-                //     headers: {
-                //         // Overwrite Axios's automatically set Content-Type
-                //         'Content-Type': 'application/json'
-                //     }
-                // }).then(res => {
-                //     console.log(res);
-                //     // Now, clear the changes for this row
-                //     if (this.changesList[groupName] && this.changesList[groupName][index]) {
-                //         delete this.changesList[groupName][index];
-                //         // If there are no more changes in this group, delete the group key as well
-                //         if (Object.keys(this.changesList[groupName]).length === 0) {
-                //             delete this.changesList[groupName];
-                //         }
-                //         // Force update to make sure the UI reflects the change
-                //         this.$forceUpdate();
-                //     }
-                // }).catch(error => {
-                //     console.error(error);
-                // });
-
             } else {
                 console.log('some important fields are missing!')
             }
         },
         async getData() {
             try {
-                let response = await this.$axios.get('http://localhost:3000/supplier/get_list');
-                this.supplierList = response.data;
-                console.log(response.data)
+                await this.$axios.get('http://localhost:3000/supplier/get_list')
+                    .then((res) => {
+                        if (res.data.success) {
+                            this.supplierList = res.data.message;
+                            console.log('This is this.supplierList: ', this.supplierList)
+                        }
+                    })
+                    .catch((e) => {
+                        console.error(e)
+                    })
             } catch (error) {
                 console.error(error);
             }
         },
-        printData() {
-            this.reminderOptionsList.forEach((e) => {
-                // console.log(e.name)
-            })
+        async getMandants() {
+            try {
+                await this.$axios.get(`http://localhost:3000/mandant/list/${this.$router.currentRoute._rawValue.params.object_id}`)
+                    .then((res) => {
+                        console.log(res)
+                        if (res.data.success) {
+                            this.existedMandantList = res.data.message
+                            console.log('This is this.existedMandantList: ', this.existedMandantList)
+                        }
+                    })
+                    .catch(
+                        (e) => {
+                            console.error(e)
+                        }
+                    )
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        async checkMandant(value) {
+            this.isMandantListed = false;
+            for (let item in this.existedMandantList) {
+                if (this.existedMandantList[item].task_name == value) {
+                    this.indexOfListedMandant = item;
+                    this.isMandantListed = true;
+                    return true;
+                }
+            }
+            return false;
         }
     },
     mounted() {
         this.getData()
-        this.printData()
+        this.getMandants()
     }
 }
 </script>
