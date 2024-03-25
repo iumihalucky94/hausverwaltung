@@ -28,10 +28,17 @@ export default {
     methods: {
         async getData() {
             try {
-                const response = await this.$axios.get('http://localhost:3000/supplier/get_list');
-                // Assuming you want to store the response in some data property, e.g., this.suppliers
-                this.suppliers = response.data;
-                console.log(this.suppliers.length)
+                await this.$axios.get('http://localhost:3000/supplier/get_list')
+                    .then((res) => {
+                        if (res.data.success) {
+                            this.suppliers = res.data.message;
+                        } else {
+                            console.error(response.data.message)
+                        }
+                    })
+                    .catch((err) => {
+                        console.error(err)
+                    })
             } catch (error) {
                 this.suppliers = false
                 console.error(error);
