@@ -7,7 +7,7 @@
                     <p class="text-2xl font-bold">{{ groupName }}</p>
                     <fai :icon="visible[index] ? 'fa-solid fa-caret-up' : 'fa-solid fa-caret-down'" />
                 </div>
-                <div v-if="visible[index]" class="w-full pl-2 pr-2">
+                <div v-if="visible[index]" class="max-w-full pl-2 pr-2">
                     <table class="w-full h-full border-2 border-slate-300">
                         <TheMandantTableHeader :header_data="tableHeaderData" />
                         <TheMandantTableRow :group_tasks="tasks" :group_name="groupName" />

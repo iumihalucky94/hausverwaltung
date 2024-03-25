@@ -33,6 +33,10 @@
             "belongs": "manager"
         },
         {
+            "name": "Status",
+            "belongs": "status"
+        },
+        {
             "name": "Actions",
             "belongs": "activity"
         }

@@ -1,3 +1,4 @@
+const { request } = require('express');
 const mariadb = require('mariadb');
 let { getTaskIdByName, getGroupIdByName, convertDate, dateTimeConvertor } = require('./utilities.js');
 require('dotenv').config();
@@ -18,7 +19,6 @@ async function insertIntoSuppliers(data) {
     try {
         conn = await pool.getConnection();
         const res = await conn.query("INSERT INTO suppliers (name, email, date_created) VALUES (?, ?, NOW())", [data.supplier_name, data.supplier_email]);
-        console.log(res); // Log the result
         return true;
     } catch (err) {
         console.error(err);
@@ -72,7 +72,6 @@ async function insertObject(data) {
         // Check if object_id already exists
         let checkSql = 'SELECT COUNT(*) AS count FROM objects WHERE object_id = ?';
         let [checkResult] = await conn.query(checkSql, [object_id.trim()]);
-        console.log(parseInt(checkResult['count']) > 0)
 
         if (parseInt(checkResult['count']) > 0) {
             // Object_id already exists
@@ -93,12 +92,10 @@ async function insertObject(data) {
 }
 
 async function updateObject(data) {
-    console.log(data)
     let conn;
     try {
         conn = await pool.getConnection();
         let rows = await conn.query(`UPDATE objects SET object_id='${data.object_id}', street='${data.street}', house_nr='${data.house_nr}', plz='${data.plz}', notes='${data.notes}' WHERE id=${data.id}`);
-        console.log(rows.affectedRows)
         return rows;
     } catch (err) {
         console.error(err);
@@ -184,7 +181,6 @@ async function checkGroupTaskExists(data) {
 
 async function createGroupTask(data) {
     let x = await checkGroupTaskExists(data)
-    console.log('if this Task or Gourp name exists: ', x)
     if (!x) {
         let conn;
         if (data.gt == 'Groups') {
@@ -245,7 +241,6 @@ async function listTasks() {
 async function list_tasks_groups() {
     let conn;
     try {
-        console.log(1)
         conn = await pool.getConnection();
         // Modified to use LEFT JOIN to include groups without tasks
         let rows = await conn.query(`
@@ -297,8 +292,6 @@ async function createMandant(data) {
     }
     // Ensure essential fields are present
     if (!data.object_id || !data.group_id || !data.task_id || !data.supplier_id || Object.keys(data).length < 4) {
-        console.log(Object.keys(data).length)
-        console.log(data)
         return { success: false, message: 'Missing required fields, such as object_id, group_id, task_id, supplier_id' };
 
     }
@@ -318,9 +311,6 @@ async function createMandant(data) {
 
             // Append group_id and task_id at the end for the WHERE clause
             updateValues.push(data.group_id, data.task_id);
-
-            console.log('This is the update Query: ', updateQuery);
-
             await conn.query(updateQuery, updateValues);
             return { success: true, message: 'Data updated successfully' };
         } else {
@@ -329,9 +319,6 @@ async function createMandant(data) {
             const placeholders = Object.keys(data).map(() => '?').join(', ');
             const values = Object.values(data);
             const insertQuery = `INSERT INTO mandant (${columns}) VALUES (${placeholders})`;
-
-            console.log('This is the insert Query: ', insertQuery);
-
             await conn.query(insertQuery, values);
             return { success: true, message: 'Data inserted successfully' };
         }
@@ -351,11 +338,10 @@ async function listMandant(data) {
         let value = data[key];
         let rows = await conn.query(`SELECT * FROM mandant WHERE ${key} = ?`, [value]);
         for (let item of rows) {
-            if (item.send_date) { item.send_date = dateTimeConvertor('datetime', item.send_date) }
-            if (item.deadline) { item.deadline = dateTimeConvertor('date', item.deadline) }
+            // if (item.send_date) { item.send_date = dateTimeConvertor('datetime', item.send_date) }
+            // if (item.deadline) { item.deadline = dateTimeConvertor('date', item.deadline) }
             if (item.task_id) {
                 let taskResult = await conn.query(`SELECT task_name FROM tasks WHERE task_id = ?`, [item.task_id]);
-                console.log(taskResult)
                 if (taskResult.length > 0) {
                     item.task_name = taskResult[0].task_name; // Correctly assign task_name to the item
                 } else {
@@ -365,7 +351,6 @@ async function listMandant(data) {
                 delete item.task_id
             }
         }
-        console.log(rows)
         return ({ success: true, message: rows })
     } catch (err) {
         console.error(err);
@@ -375,4 +360,52 @@ async function listMandant(data) {
     }
 }
 
-module.exports = { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, listTasks, list_tasks_groups, createMandant, listMandant };
+async function changeMandantStatus(data) {
+    let conn;
+    let updateValue;
+    try {
+        conn = await pool.getConnection();
+        let request = `SELECT * FROM mandant 
+                       WHERE task_id = (SELECT task_id FROM tasks WHERE task_name = ?) 
+                       AND group_id = (SELECT group_id FROM groups WHERE group_name = ?) 
+                       AND object_id = ? 
+                       LIMIT 1`;
+        let result = await conn.query(request, [data.task_name, data.group_name, data.object_id]);
+        if (!result) {
+            return ({ success: false, message: 'For some reason now records found in DB for this statement' })
+        }
+        if (result[0].status) {
+
+            switch (result[0].status) {
+                case 'Active':
+                    updateValue = 'Disable'
+                    break;
+                case 'Disable':
+                    updateValue = 'Active'
+                    break;
+            }
+
+            let updateRequest = `UPDATE mandant
+                            SET status = ?
+                            WHERE mandant_id = ?
+                            `
+            let resultUpdate = await conn.query(updateRequest, [updateValue, result[0].mandant_id]);
+            if (resultUpdate.affectedRows > 0) {
+                return ({ success: true, message: 'Record status value has been updated successfully!', value: updateValue })
+            } else {
+                return ({ success: false, message: 'Something went wrong with DB connection in function listMandant' })
+            }
+        }
+
+
+    } catch (error) {
+        console.error(error);
+        return ({ success: false, message: 'Something went wrong with DB connection in function listMandant' })
+    } finally {
+        if (conn) conn.end();
+    }
+}
+
+// <===================== MANDANT END =====================>
+
+module.exports = { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, listTasks, list_tasks_groups, createMandant, listMandant, changeMandantStatus };

@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Custom imports 
-const { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, list_tasks_groups, createMandant, listMandant } = require('./db');
+const { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, list_tasks_groups, createMandant, listMandant, changeMandantStatus } = require('./db');
 
 // Middleware
 app.use(bodyParser.json());
@@ -52,7 +52,6 @@ app.post('/supplier/create_new', async (req, res) => {
 app.get('/supplier/get_list', async (req, res) => {
     try {
         let response = await getAllSuppliers();
-        console.log(response.message)
         res.status(200).send({ success: response.success, message: response.message });
     } catch (error) {
         console.error(error);
@@ -77,9 +76,7 @@ app.post('/objects/create', async (req, res) => {
 app.put('/objects/update', async (req, res) => {
     try {
         let updateDataJSON = req.body
-        console.log(updateDataJSON)
         let result = await updateObject(updateDataJSON)
-        console.log(result)
         if (result.affectedRows === 1) {
             res.status(200).send({ success: true, message: 'Record has been updated successfully' })
         } else {
@@ -94,7 +91,6 @@ app.get('/objects/get_data/:objectId', async (req, res) => {
     try {
         const objectId = req.params.objectId;
         let objectRes = await getObjectByID(objectId)
-        console.log(Object.keys(objectRes).length)
         if (Object.keys(objectRes).length > 0) {
             res.status(200).send({ success: true, message: objectRes })
         } else {
@@ -109,7 +105,6 @@ app.post('/objects/delete/', async (req, res) => {
     try {
         if (req.body.toBeDeleted) {
             let objectRes = await deleteObecject(req.body.object_id)
-            console.log(objectRes)
             res.status(200).send({ success: true, message: `${objectRes} Row(s) has been deleted.` })
         } else {
             res.status(400).send({ success: false, error: `${objectRes} || Something went wrong.` })
@@ -190,7 +185,6 @@ app.get('/tg/list', async (req, res) => {
 
 app.post('/mandant/create', async (req, res) => {
     try {
-        console.log(req.body)
         let response = await createMandant(req.body)
         res.status(200).send({ success: response.success, message: response.message })
         // res.status(200).send({ success: true, message: response.message })
@@ -204,6 +198,17 @@ app.get('/mandant/list/:object_id', async (req, res) => {
         let response = await listMandant(req.params)
         res.status(200).send({ success: response.success, message: response.message })
     } catch (error) {
+        res.status(400).send({ success: false, error: error.message })
+    }
+})
+
+app.post('/mandant/change_status', async (req, res) => {
+    try {
+        let response = await changeMandantStatus(req.body)
+        // res.status(200).send('OK')
+        res.status(200).send({ success: response.success, message: response.message, value: response.value })
+    } catch (error) {
+        console.log(error)
         res.status(400).send({ success: false, error: error.message })
     }
 })
