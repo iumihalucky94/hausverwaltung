@@ -7,14 +7,30 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Custom imports 
-const { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, list_tasks_groups, createMandant, listMandant, changeMandantStatus } = require('./db');
+const {
+    insertIntoSuppliers,
+    checkEmailExists,
+    getAllSuppliers,
+    insertObject,
+    getAllObjects,
+    updateObject,
+    getObjectByID,
+    deleteObecject,
+    createGroupTask,
+    listGroups,
+    list_tasks_groups,
+    createMandant,
+    listMandant,
+    changeMandantStatus
+} = require('./db');
 
 // Middleware
 app.use(bodyParser.json());
 
 // CORS options
 const corsOptions = {
-    origin: 'http://localhost:5173', // This should be the URL of your Vue app
+    // origin: 'http://localhost:5173', // For Development version
+    origin: 'http://localhost:61389', // For Build version
     optionsSuccessStatus: 200,
 };
 
