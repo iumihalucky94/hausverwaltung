@@ -408,4 +408,26 @@ async function changeMandantStatus(data) {
 
 // <===================== MANDANT END =====================>
 
-module.exports = { insertIntoSuppliers, checkEmailExists, getAllSuppliers, insertObject, getAllObjects, updateObject, getObjectByID, deleteObecject, createGroupTask, listGroups, listTasks, list_tasks_groups, createMandant, listMandant, changeMandantStatus };
+// <===================== TASKS_PLANNER =====================>
+
+
+
+
+// <===================== MODULE EXPORT =====================>
+module.exports = {
+    insertIntoSuppliers,
+    checkEmailExists,
+    getAllSuppliers,
+    insertObject,
+    getAllObjects,
+    updateObject,
+    getObjectByID,
+    deleteObecject,
+    createGroupTask,
+    listGroups,
+    listTasks,
+    list_tasks_groups,
+    createMandant,
+    listMandant,
+    changeMandantStatus
+};
