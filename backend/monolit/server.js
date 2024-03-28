@@ -29,8 +29,8 @@ app.use(bodyParser.json());
 
 // CORS options
 const corsOptions = {
-    // origin: 'http://localhost:5173', // For Development version
-    origin: 'http://localhost:61389', // For Build version
+    origin: 'http://localhost:5173', // For Development version
+    // origin: 'http://localhost:61389', // For Build version
     optionsSuccessStatus: 200,
 };
 

@@ -345,7 +345,7 @@ async function listMandant(data) {
                 if (taskResult.length > 0) {
                     item.task_name = taskResult[0].task_name; // Correctly assign task_name to the item
                 } else {
-                    return ({ success: false, message: 'Something went wrong with DB connection in function listMandant 2' })
+                    return ({ success: false, message: 'Something went wrong with DB connection in function listMandant' })
                 }
                 rows['task_name']
                 delete item.task_id

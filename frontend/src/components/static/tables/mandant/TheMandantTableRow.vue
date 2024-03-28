@@ -62,16 +62,7 @@
                 <button :class="buttonClass('status', item)" @click="changeRecordStatus(index, group_name, item)">
                     {{ buttonText('status', item) }}
                 </button>
-                <!-- <button v-if="checkInMandantExistence('status', item) == 'Active'"
-                    class="w-20 h-8 bg-thirdly rounded-xl flex items-center justify-center hover:bg-green-600 text-white"
-                    @click="changeRecordStatus(index, group_name, item)">
-                    Active
-                </button>
-                <button v-else-if="checkInMandantExistence('status', item) == 'Disable'"
-                    class="w-20 h-8 bg-red-400 rounded-xl flex items-center justify-center hover:bg-red-600 text-white"
-                    @click="changeRecordStatus(index, group_name, item)">
-                    Disable
-                </button> -->
+
             </td>
             <td class="flex w-full h-full items-center justify-center">
                 <button

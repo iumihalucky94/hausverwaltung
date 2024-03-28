@@ -39,6 +39,7 @@ export default {
         async fetchGroupsAndTasks() {
             await this.$axios.get('http://localhost:3000/tg/list')
                 .then(response => {
+                    console.log(response.data.message)
                     this.groupsAndTasks = response.data.message;
                     // Initialize visibility state for each group
                     Object.keys(this.groupsAndTasks).forEach(key => {
